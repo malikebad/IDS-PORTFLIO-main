@@ -10,7 +10,6 @@ import { BackToTop } from "@/components/ui/back-to-top";
 import { MaskedInput } from "@/components/ui/masked-input";
 import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
-import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const { toast } = useToast();
@@ -28,28 +27,35 @@ const Contact = () => {
     setFormStatus("submitting");
 
     try {
-      // EmailJS configuration - you'll need to set up your EmailJS account
-      const serviceId = 'your_service_id'; // Replace with your EmailJS service ID
-      const templateId = 'your_template_id'; // Replace with your EmailJS template ID
-      const publicKey = 'your_public_key'; // Replace with your EmailJS public key
+      // For now, let's use a simple mailto approach as a fallback
+      // This will open the user's email client with pre-filled content
+      const subject = encodeURIComponent(`Contact Form: ${formData.subject}`);
+      const body = encodeURIComponent(`
+New Contact Form Message from Inventer Studio Website
 
-      // Prepare template parameters
-      const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        phone: formData.phone,
-        subject: formData.subject,
-        message: formData.message,
-        to_email: 'info@inventerdesignstudio.com',
-        reply_to: formData.email,
-      };
+Contact Details:
+- Name: ${formData.name}
+- Email: ${formData.email}
+- Phone: ${formData.phone}
+- Subject: ${formData.subject}
 
-      // Send email using EmailJS
-      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+Message:
+${formData.message}
+
+---
+This message was sent via the contact form on inventerstudio.com
+Timestamp: ${new Date().toLocaleString()}
+      `);
+
+      // Create mailto link
+      const mailtoLink = `mailto:info@inventerdesignstudio.com?subject=${subject}&body=${body}`;
+
+      // Open email client
+      window.location.href = mailtoLink;
 
       toast({
-        title: "Message Sent Successfully!",
-        description: "Thank you for contacting us. We'll get back to you within 24 hours.",
+        title: "Opening Email Client...",
+        description: "Your email client should open with the message ready to send.",
       });
 
       setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
@@ -61,8 +67,8 @@ const Contact = () => {
     } catch (error) {
       console.error("Form submission error:", error);
       toast({
-        title: "Message Failed to Send",
-        description: "Please try again or contact us directly at info@inventerdesignstudio.com",
+        title: "Email Client Error",
+        description: "Please contact us directly at info@inventerdesignstudio.com",
         variant: "destructive",
       });
       setFormStatus("idle");
@@ -195,6 +201,9 @@ const Contact = () => {
                 <div className="flex items-center space-x-3 mb-6">
                   <MessageSquare className="w-5 h-5 text-primary" />
                   <h2 className="text-xl sm:text-2xl font-bold">Send us a message</h2>
+                  <div className="text-xs text-muted-foreground bg-yellow-50 dark:bg-yellow-900/20 px-2 py-1 rounded">
+                    Opens your email client
+                  </div>
                 </div>
                 
                 <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
@@ -276,18 +285,18 @@ const Contact = () => {
                     />
                   </div>
 
-                  <Button 
-                    type="submit" 
+                  <Button
+                    type="submit"
                     className="w-full rounded-full shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:scale-105 transition-all duration-300"
                     disabled={formStatus !== "idle"}
                   >
                     {formStatus === "idle" && (
                       <>
-                        Send Message <Send className="ml-2 w-4 h-4" />
+                        Open Email Client <Send className="ml-2 w-4 h-4" />
                       </>
                     )}
-                    {formStatus === "submitting" && "Sending..."}
-                    {formStatus === "success" && "Message Sent!"}
+                    {formStatus === "submitting" && "Opening..."}
+                    {formStatus === "success" && "Email Client Opened!"}
                   </Button>
                 </form>
               </div>
