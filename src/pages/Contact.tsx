@@ -202,10 +202,9 @@ const Contact = () => {
                   </div>
                 </div>
 
-                {/* Formspree HTML Form */}
+                {/* Formspree HTML Form with AJAX submission */}
                 <form
-                  action="https://formspree.io/f/mjkppvla"
-                  method="POST"
+                  id="contact-form"
                   className="space-y-5 sm:space-y-6"
                 >
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
@@ -279,7 +278,42 @@ const Contact = () => {
                   </div>
 
                   <Button
-                    type="submit"
+                    type="button"
+                    onClick={async (e) => {
+                      e.preventDefault();
+                      const form = document.getElementById('contact-form') as HTMLFormElement;
+                      if (!form) return;
+
+                      const formData = new FormData(form);
+                      const data = Object.fromEntries(formData.entries());
+
+                      try {
+                        const response = await fetch("https://formspree.io/f/mjkppvla", {
+                          method: "POST",
+                          body: formData,
+                          headers: {
+                            'Accept': 'application/json'
+                          }
+                        });
+
+                        if (response.ok) {
+                          toast({
+                            title: "Message Sent Successfully!",
+                            description: "Thank you for contacting us. We'll get back to you within 24 hours.",
+                          });
+                          form.reset();
+                        } else {
+                          throw new Error('Form submission failed');
+                        }
+                      } catch (error) {
+                        console.error('Form submission error:', error);
+                        toast({
+                          title: "Message Failed to Send",
+                          description: "Please try again or contact us directly at info@inventerdesignstudio.com",
+                          variant: "destructive",
+                        });
+                      }
+                    }}
                     className="w-full rounded-full shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:scale-105 transition-all duration-300"
                   >
                     Send Message <Send className="ml-2 w-4 h-4" />
