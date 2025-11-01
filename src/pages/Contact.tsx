@@ -27,48 +27,43 @@ const Contact = () => {
     setFormStatus("submitting");
 
     try {
-      // For now, let's use a simple mailto approach as a fallback
-      // This will open the user's email client with pre-filled content
-      const subject = encodeURIComponent(`Contact Form: ${formData.subject}`);
-      const body = encodeURIComponent(`
-New Contact Form Message from Inventer Studio Website
-
-Contact Details:
-- Name: ${formData.name}
-- Email: ${formData.email}
-- Phone: ${formData.phone}
-- Subject: ${formData.subject}
-
-Message:
-${formData.message}
-
----
-This message was sent via the contact form on inventerstudio.com
-Timestamp: ${new Date().toLocaleString()}
-      `);
-
-      // Create mailto link
-      const mailtoLink = `mailto:info@inventerdesignstudio.com?subject=${subject}&body=${body}`;
-
-      // Open email client
-      window.location.href = mailtoLink;
-
-      toast({
-        title: "Opening Email Client...",
-        description: "Your email client should open with the message ready to send.",
+      // Send form data to Formspree
+      const response = await fetch("https://formspree.io/f/mjkppvla", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          subject: formData.subject,
+          message: formData.message,
+          _subject: `Contact Form: ${formData.subject}`,
+          _replyto: formData.email,
+        }),
       });
 
-      setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
-      setFormStatus("success");
+      if (response.ok) {
+        toast({
+          title: "Message Sent Successfully!",
+          description: "Thank you for contacting us. We'll get back to you within 24 hours.",
+        });
 
-      // Reset form status after showing success
-      setTimeout(() => setFormStatus("idle"), 5000);
+        setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+        setFormStatus("success");
+
+        // Reset form status after showing success
+        setTimeout(() => setFormStatus("idle"), 5000);
+      } else {
+        throw new Error("Failed to send message");
+      }
 
     } catch (error) {
       console.error("Form submission error:", error);
       toast({
-        title: "Email Client Error",
-        description: "Please contact us directly at info@inventerdesignstudio.com",
+        title: "Message Failed to Send",
+        description: "Please try again or contact us directly at info@inventerdesignstudio.com",
         variant: "destructive",
       });
       setFormStatus("idle");
@@ -201,8 +196,8 @@ Timestamp: ${new Date().toLocaleString()}
                 <div className="flex items-center space-x-3 mb-6">
                   <MessageSquare className="w-5 h-5 text-primary" />
                   <h2 className="text-xl sm:text-2xl font-bold">Send us a message</h2>
-                  <div className="text-xs text-muted-foreground bg-yellow-50 dark:bg-yellow-900/20 px-2 py-1 rounded">
-                    Opens your email client
+                  <div className="text-xs text-muted-foreground bg-green-50 dark:bg-green-900/20 px-2 py-1 rounded">
+                    Direct email delivery
                   </div>
                 </div>
                 
@@ -292,11 +287,11 @@ Timestamp: ${new Date().toLocaleString()}
                   >
                     {formStatus === "idle" && (
                       <>
-                        Open Email Client <Send className="ml-2 w-4 h-4" />
+                        Send Message <Send className="ml-2 w-4 h-4" />
                       </>
                     )}
-                    {formStatus === "submitting" && "Opening..."}
-                    {formStatus === "success" && "Email Client Opened!"}
+                    {formStatus === "submitting" && "Sending..."}
+                    {formStatus === "success" && "Message Sent!"}
                   </Button>
                 </form>
               </div>
