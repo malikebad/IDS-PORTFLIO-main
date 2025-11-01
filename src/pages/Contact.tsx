@@ -10,6 +10,7 @@ import { BackToTop } from "@/components/ui/back-to-top";
 import { MaskedInput } from "@/components/ui/masked-input";
 import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const { toast } = useToast();
@@ -22,23 +23,51 @@ const Contact = () => {
   });
   const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success">("idle");
 
-  const handleSubmit = useCallback((e: React.FormEvent) => {
+  const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
     setFormStatus("submitting");
-    
-    // Simulate form submission
-    setTimeout(() => {
+
+    try {
+      // EmailJS configuration - you'll need to set up your EmailJS account
+      const serviceId = 'your_service_id'; // Replace with your EmailJS service ID
+      const templateId = 'your_template_id'; // Replace with your EmailJS template ID
+      const publicKey = 'your_public_key'; // Replace with your EmailJS public key
+
+      // Prepare template parameters
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone,
+        subject: formData.subject,
+        message: formData.message,
+        to_email: 'info@inventerdesignstudio.com',
+        reply_to: formData.email,
+      };
+
+      // Send email using EmailJS
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+
       toast({
-        title: "Message Sent!",
-        description: "We'll get back to you as soon as possible.",
+        title: "Message Sent Successfully!",
+        description: "Thank you for contacting us. We'll get back to you within 24 hours.",
       });
-      setFormData({ name: "", email: "", subject: "", message: "" });
+
+      setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
       setFormStatus("success");
-      
+
       // Reset form status after showing success
-      setTimeout(() => setFormStatus("idle"), 3000);
-    }, 1000);
-  }, [toast]);
+      setTimeout(() => setFormStatus("idle"), 5000);
+
+    } catch (error) {
+      console.error("Form submission error:", error);
+      toast({
+        title: "Message Failed to Send",
+        description: "Please try again or contact us directly at info@inventerdesignstudio.com",
+        variant: "destructive",
+      });
+      setFormStatus("idle");
+    }
+  }, [toast, formData]);
 
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData((prev) => ({
