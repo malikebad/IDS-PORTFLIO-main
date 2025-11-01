@@ -12,6 +12,7 @@ import FAQ from "./pages/FAQ";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import NotFound from "./pages/NotFound";
+import FloatingContactWidget from "./components/FloatingContactWidget";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +34,8 @@ const App = () => (
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        {/* Floating Contact Widget - Available on all pages */}
+        <FloatingContactWidget />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

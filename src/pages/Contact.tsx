@@ -197,9 +197,6 @@ const Contact = () => {
                 <div className="flex items-center space-x-3 mb-6">
                   <MessageSquare className="w-5 h-5 text-primary" />
                   <h2 className="text-xl sm:text-2xl font-bold">Send us a message</h2>
-                  <div className="text-xs text-muted-foreground bg-green-50 dark:bg-green-900/20 px-2 py-1 rounded">
-                    Direct email delivery
-                  </div>
                 </div>
 
                 {/* Formspree HTML Form with AJAX submission */}
