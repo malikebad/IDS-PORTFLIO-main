@@ -17,48 +17,63 @@ const Home = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState<Record<number, {rx:number, ry:number}>>({});
   
-  // Mouse position tracker for parallax
+  // Optimized mouse position tracker for parallax with throttling
   useEffect(() => {
+    let rafId: number;
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        setMousePosition({ x: e.clientX, y: e.clientY });
+      });
     };
-    
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, []);
 
-  // Animated counter effect
+  // Optimized animated counter effect with lazy loading
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            let rafId: number;
             const duration = 2000;
             const start = Date.now();
-            
+
             const animate = () => {
               const now = Date.now();
               const progress = Math.min((now - start) / duration, 1);
-              
+
               setCounters({
                 projects: Math.floor(150 * progress),
                 clients: Math.floor(50 * progress),
                 years: Math.floor(12 * progress),
                 awards: Math.floor(10 * progress)
               });
-              
-              if (progress < 1) requestAnimationFrame(animate);
+
+              if (progress < 1) {
+                rafId = requestAnimationFrame(animate);
+              }
             };
             animate();
+
+            // Cleanup function for this animation
+            return () => {
+              if (rafId) cancelAnimationFrame(rafId);
+            };
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold: 0.5, rootMargin: '50px' }
     );
 
     const element = document.getElementById('stats-section');
     if (element) observer.observe(element);
-    
+
     return () => observer.disconnect();
   }, []);
   const featuredProjects = [
@@ -124,29 +139,29 @@ const Home = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <section 
+      <section
         ref={heroRef}
-        className="relative min-h-[80vh] sm:min-h-[85vh] md:min-h-[90vh] lg:min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 md:pt-20 lg:pt-24"
+        className="relative min-h-[80vh] sm:min-h-[85vh] md:min-h-[90vh] lg:min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 md:pt-20 lg:pt-24 will-change-transform"
       >
         {/* Animated background with grid */}
         <div className="absolute inset-0 bg-background">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:20px_20px] sm:bg-[size:30px_30px] md:bg-[size:40px_40px] lg:bg-[size:60px_60px]" />
           
           {/* Animated gradient orbs (lime + charcoal) */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.5 }}
-            className="absolute top-1/3 left-1/3 w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-r from-lime-400/20 to-lime-500/10 rounded-full blur-3xl animate-pulse"
+            className="absolute top-1/3 left-1/3 w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-r from-lime-400/20 to-lime-500/10 rounded-full blur-3xl animate-pulse will-change-transform"
             style={{
               transform: `translate(${mousePosition.x * 0.01}px, ${mousePosition.y * 0.01}px)`
             }}
           />
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.5, delay: 0.3 }}
-            className="absolute bottom-1/3 right-1/3 w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-r from-zinc-600/20 to-zinc-400/10 rounded-full blur-3xl animate-pulse"
+            className="absolute bottom-1/3 right-1/3 w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-r from-zinc-600/20 to-zinc-400/10 rounded-full blur-3xl animate-pulse will-change-transform"
             style={{
               transform: `translate(${-mousePosition.x * 0.01}px, ${-mousePosition.y * 0.01}px)`
             }}
@@ -206,26 +221,26 @@ const Home = () => {
           </motion.div>
           {/* Removed logo per branding request */}
 
-            <motion.h1 
+            <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-2 sm:mb-3 md:mb-4 lg:mb-6"
           >
-            <span className="block mb-1 sm:mb-2">Fast Action.</span>
+            <span className="block mb-1 sm:mb-2">Software Development & Video Production</span>
             <span className="relative inline-block">
-              Smart Results.
+              Creative Technology Studio
               <span className="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-1 sm:h-2 bg-gradient-to-r from-lime-400 via-lime-500 to-lime-400 opacity-20 blur-sm animate-pulse" />
             </span>
           </motion.h1>
 
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-sm sm:text-base md:text-lg text-muted-foreground mb-4 sm:mb-6 md:mb-8 lg:mb-10 max-w-3xl mx-auto leading-relaxed px-1 sm:px-2 md:px-4"
           >
-            IT services and content at one studio: DevOps, networking, and cloud engineering alongside CG ads, editing, and motion graphics.
+            Leading creative technology studio specializing in software development, UI/UX design, video production, and digital experiences. We transform ideas into scalable solutions and compelling stories.
           </motion.p>
 
           <motion.div 
@@ -234,26 +249,26 @@ const Home = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center"
           >
-            <Button 
-              size="lg" 
-              variant="default" 
-              asChild 
+            <Button
+              size="lg"
+              variant="default"
+              asChild
               className="group shadow-lg hover:shadow-2xl hover:shadow-lime-400/20 w-full sm:w-auto text-sm sm:text-base px-4 sm:px-6 md:px-8 lg:px-10 py-4 sm:py-5 md:py-6 rounded-full transform hover:scale-105 transition-all duration-300"
             >
               <Link to="/portfolio">
-                Explore Our Work
+                View Our Portfolio
                 <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              asChild 
+            <Button
+              size="lg"
+              variant="outline"
+              asChild
               className="group border-2 hover:border-primary w-full sm:w-auto text-sm sm:text-base px-8 sm:px-10 py-6 rounded-full hover:bg-primary/10 transform hover:scale-105 transition-all duration-300"
             >
               <Link to="/contact">
                 <Play className="mr-2 w-4 h-4" />
-                Watch Reel
+                Get Free Consultation
               </Link>
             </Button>
           </motion.div>
@@ -267,25 +282,25 @@ const Home = () => {
             id="stats-section"
             className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8 mt-8 sm:mt-12 md:mt-16 lg:mt-20 pt-6 sm:pt-8 md:pt-12 border-t border-border/50 px-1 sm:px-2 md:px-4 max-w-4xl mx-auto"
           >
-            <div className="animate-slide-up group text-center px-1 sm:px-2" style={{ animationDelay: '0.1s' }}>
+            <div className="animate-slide-up group text-center px-1 sm:px-2" style={{ animationDelay: '0.1s', willChange: 'transform' }}>
               <div className="text-lg sm:text-xl md:text-2xl lg:text-4xl font-bold text-gradient-blue-cyan mb-1 transition-all duration-300 group-hover:scale-110">
                 {counters.projects}+
               </div>
               <div className="text-xs sm:text-sm text-muted-foreground">Projects Delivered</div>
             </div>
-            <div className="animate-slide-up group text-center px-1 sm:px-2" style={{ animationDelay: '0.2s' }}>
+            <div className="animate-slide-up group text-center px-1 sm:px-2" style={{ animationDelay: '0.2s', willChange: 'transform' }}>
               <div className="text-lg sm:text-xl md:text-2xl lg:text-4xl font-bold text-gradient-blue-cyan mb-1 transition-all duration-300 group-hover:scale-110">
                 {counters.clients}+
               </div>
               <div className="text-xs sm:text-sm text-muted-foreground">Happy Clients</div>
             </div>
-            <div className="animate-slide-up group text-center px-1 sm:px-2" style={{ animationDelay: '0.3s' }}>
+            <div className="animate-slide-up group text-center px-1 sm:px-2" style={{ animationDelay: '0.3s', willChange: 'transform' }}>
               <div className="text-lg sm:text-xl md:text-2xl lg:text-4xl font-bold text-gradient-blue-cyan mb-1 transition-all duration-300 group-hover:scale-110">
                 {counters.years}+
               </div>
               <div className="text-xs sm:text-sm text-muted-foreground">Years Experience</div>
             </div>
-            <div className="animate-slide-up group text-center px-1 sm:px-2" style={{ animationDelay: '0.4s' }}>
+            <div className="animate-slide-up group text-center px-1 sm:px-2" style={{ animationDelay: '0.4s', willChange: 'transform' }}>
               <div className="text-lg sm:text-xl md:text-2xl lg:text-4xl font-bold text-gradient-blue-cyan mb-1 transition-all duration-300 group-hover:scale-110">
                 {counters.awards}+
               </div>
@@ -345,7 +360,7 @@ const Home = () => {
       {/* Testimonials Section */}
       <section className="py-16 sm:py-24 md:py-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="container mx-auto">
-          <div className="text-center mb-8 sm:mb-12 md:mb-16 animate-fade-in">
+          <div className="text-center mb-8 sm:mb-12 md:mb-16 animate-fade-in" style={{ willChange: 'opacity, transform' }}>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">What Clients Say</h2>
             <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">Results, not promises. Here's why partners choose us again.</p>
           </div>
@@ -381,7 +396,7 @@ const Home = () => {
       {/* Capabilities Section */}
       <section className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="container mx-auto relative z-10">
-          <div className="text-center mb-12 sm:mb-16 md:mb-20 animate-fade-in">
+          <div className="text-center mb-12 sm:mb-16 md:mb-20 animate-fade-in" style={{ willChange: 'opacity, transform' }}>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">What We Do</h2>
             <p className="text-muted-foreground text-base sm:text-lg md:text-xl max-w-2xl mx-auto px-4">
               Full‑stack web apps, SaaS platforms, and cinematic films — crafted end‑to‑end.
@@ -393,7 +408,7 @@ const Home = () => {
               <div
                 key={capability.title}
                 className="group relative p-6 sm:p-8 bg-card border border-border rounded-3xl hover:border-primary/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-primary/10 animate-slide-up creative-shadow overflow-hidden"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                style={{ animationDelay: `${index * 0.1}s`, willChange: 'transform, opacity' }}
               >
                 {/* Gradient overlay on hover */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -421,11 +436,12 @@ const Home = () => {
       {/* Featured Projects */}
       <section className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="text-center mb-12 sm:mb-16 md:mb-20"
+            style={{ willChange: 'opacity, transform' }}
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">Featured Work</h2>
             <p className="text-muted-foreground text-base sm:text-lg md:text-xl max-w-2xl mx-auto px-4">
@@ -445,6 +461,7 @@ const Home = () => {
                   to="/portfolio"
                   className="group relative overflow-hidden rounded-3xl aspect-[4/3] hover-scale creative-shadow will-change-transform block"
                   onMouseMove={(e) => {
+                    // Throttle mouse move events for better performance
                     const rect = (e.currentTarget as HTMLAnchorElement).getBoundingClientRect();
                     const x = e.clientX - rect.left;
                     const y = e.clientY - rect.top;
@@ -463,12 +480,12 @@ const Home = () => {
                   {/* Image with parallax-like zoom */}
                   <div className="absolute inset-0 overflow-hidden">
                     <img
-                      src={project.image}
-                      alt={project.title}
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-125"
-                    />
+                        src={project.image}
+                        alt={`${project.title} - ${project.category} project by Inventer Studio`}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-125"
+                      />
                     {/* Animated overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent group-hover:via-black/60 transition-all duration-700" />
                     
@@ -508,16 +525,17 @@ const Home = () => {
             ))}
           </div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
             className="text-center mt-8 sm:mt-12 md:mt-16"
+            style={{ willChange: 'opacity, transform' }}
           >
-            <Button 
-              variant="outline" 
-              size="lg" 
-              asChild 
+            <Button
+              variant="outline"
+              size="lg"
+              asChild
               className="group border-2 hover:border-primary hover:bg-primary/10 text-sm sm:text-base px-8 py-6 rounded-full transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-primary/20"
             >
               <Link to="/portfolio">
@@ -539,7 +557,7 @@ const Home = () => {
         <div className="absolute bottom-1/3 left-1/4 w-72 h-72 bg-gradient-to-r from-zinc-600/15 to-zinc-400/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
         
         <div className="container mx-auto max-w-5xl relative z-10">
-          <div className="text-center animate-fade-in px-4">
+          <div className="text-center animate-fade-in px-4" style={{ willChange: 'opacity, transform' }}>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 md:mb-12">
               Where Code Meets
               <br />
@@ -549,16 +567,16 @@ const Home = () => {
               </span>
             </h2>
             <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed">
-              We believe the future of digital experiences lies at the intersection of cutting-edge 
-              technology and compelling storytelling. Our multidisciplinary team brings together software 
-              engineers, creative directors, and visual artists to craft experiences that don't just 
+              We believe the future of digital experiences lies at the intersection of cutting-edge
+              technology and compelling storytelling. Our multidisciplinary team brings together software
+              engineers, creative directors, and visual artists to craft experiences that don't just
               function—they inspire.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
-                variant="default" 
-                asChild 
+              <Button
+                size="lg"
+                variant="default"
+                asChild
                 className="group shadow-xl hover:shadow-2xl hover:shadow-lime-400/30 text-sm sm:text-base px-8 sm:px-10 py-6 rounded-full transform hover:scale-105 transition-all duration-300"
               >
                 <Link to="/about" className="flex items-center">

@@ -162,7 +162,7 @@ const About = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
             <img
               src={studioImage}
-              alt="Inventer Design Studio"
+              alt="Inventer Design Studio creative workspace - modern office environment showcasing our design and development studio"
               className="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] object-cover transition-transform duration-700 group-hover:scale-105"
             />
             <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 md:p-10 z-20">

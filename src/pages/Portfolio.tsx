@@ -170,7 +170,7 @@ const Portfolio = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <img
                     src={project.image}
-                    alt={project.title}
+                    alt={`${project.title} - ${project.category} project showcasing ${project.tags.join(', ')} technologies by Inventer Studio`}
                     className="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
