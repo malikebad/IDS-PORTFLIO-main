@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo, useEffect } from "react";
+import { useState, useCallback, useMemo } from "react";
 import { Mail, Phone, MapPin, Send, ArrowRight, Clock, MessageSquare } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -11,13 +11,6 @@ import { MaskedInput } from "@/components/ui/masked-input";
 import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
 
-// Extend Window interface for Formspree
-declare global {
-  interface Window {
-    formbutton?: any;
-  }
-}
-
 const Contact = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
@@ -29,145 +22,6 @@ const Contact = () => {
   });
   const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success">("idle");
 
-  // Load Formspree script and initialize form
-  useEffect(() => {
-    // Initialize formbutton queue if it doesn't exist
-    if (!window.formbutton) {
-      window.formbutton = function() {
-        (window.formbutton.q = window.formbutton.q || []).push(arguments);
-      };
-    }
-
-    // Load Formspree script if not already loaded
-    if (!document.querySelector('script[src="https://formspree.io/js/formbutton-v1.min.js"]')) {
-      const script = document.createElement('script');
-      script.src = 'https://formspree.io/js/formbutton-v1.min.js';
-      script.defer = true;
-      document.head.appendChild(script);
-
-      script.onload = () => {
-        // Initialize the form button after script loads
-        window.formbutton("create", {
-          action: "https://formspree.io/f/mjkppvla",
-          title: "Send us a message",
-          fields: [
-            {
-              type: "text",
-              label: "Name:",
-              name: "name",
-              required: true,
-              placeholder: "Your name"
-            },
-            {
-              type: "email",
-              label: "Email:",
-              name: "email",
-              required: true,
-              placeholder: "your@email.com"
-            },
-            {
-              type: "text",
-              label: "Phone:",
-              name: "phone",
-              required: false,
-              placeholder: "Your phone number"
-            },
-            {
-              type: "text",
-              label: "Subject:",
-              name: "subject",
-              required: true,
-              placeholder: "What's this about?"
-            },
-            {
-              type: "textarea",
-              label: "Message:",
-              name: "message",
-              required: true,
-              placeholder: "Tell us what you need"
-            },
-            { type: "submit" }
-          ],
-          styles: {
-            title: {
-              backgroundColor: "hsl(75, 92%, 58%)",
-              color: "white",
-              fontFamily: "Poppins, sans-serif"
-            },
-            button: {
-              backgroundColor: "hsl(75, 92%, 58%)",
-              color: "white",
-              borderRadius: "9999px",
-              fontFamily: "Inter, sans-serif"
-            },
-            modal: {
-              borderRadius: "16px"
-            }
-          }
-        });
-      };
-    } else {
-      // Script already loaded, initialize immediately
-      window.formbutton("create", {
-        action: "https://formspree.io/f/mjkppvla",
-        title: "Send us a message",
-        fields: [
-          {
-            type: "text",
-            label: "Name:",
-            name: "name",
-            required: true,
-            placeholder: "Your name"
-          },
-          {
-            type: "email",
-            label: "Email:",
-            name: "email",
-            required: true,
-            placeholder: "your@email.com"
-          },
-          {
-            type: "text",
-            label: "Phone:",
-            name: "phone",
-            required: false,
-            placeholder: "Your phone number"
-          },
-          {
-            type: "text",
-            label: "Subject:",
-            name: "subject",
-            required: true,
-            placeholder: "What's this about?"
-          },
-          {
-            type: "textarea",
-            label: "Message:",
-            name: "message",
-            required: true,
-            placeholder: "Tell us what you need"
-          },
-          { type: "submit" }
-        ],
-        styles: {
-          title: {
-            backgroundColor: "hsl(75, 92%, 58%)",
-            color: "white",
-            fontFamily: "Poppins, sans-serif"
-          },
-          button: {
-            backgroundColor: "hsl(75, 92%, 58%)",
-            color: "white",
-            borderRadius: "9999px",
-            fontFamily: "Inter, sans-serif"
-          },
-          modal: {
-            borderRadius: "16px"
-          }
-        }
-      });
-    }
-  }, [toast]);
 
   const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
@@ -343,60 +197,93 @@ const Contact = () => {
                 <div className="flex items-center space-x-3 mb-6">
                   <MessageSquare className="w-5 h-5 text-primary" />
                   <h2 className="text-xl sm:text-2xl font-bold">Send us a message</h2>
-                  <div className="text-xs text-muted-foreground bg-blue-50 dark:bg-blue-900/20 px-2 py-1 rounded">
-                    Formspree integration
+                  <div className="text-xs text-muted-foreground bg-green-50 dark:bg-green-900/20 px-2 py-1 rounded">
+                    Direct email delivery
                   </div>
                 </div>
 
-                {/* Formspree Button Container */}
-                <div className="text-center">
-                  <div id="formspree-button-container"></div>
-
-                  <Button
-                    onClick={() => {
-                      // Try to trigger Formspree modal
-                      if (window.formbutton) {
-                        try {
-                          // Create a temporary button to trigger the modal
-                          const tempButton = document.createElement('button');
-                          tempButton.setAttribute('data-formspree', '');
-                          tempButton.style.display = 'none';
-                          document.body.appendChild(tempButton);
-                          tempButton.click();
-                          document.body.removeChild(tempButton);
-                        } catch (error) {
-                          console.error('Formspree modal trigger failed:', error);
-                          // Fallback: open form in new tab
-                          window.open('https://formspree.io/f/mjkppvla', '_blank');
-                        }
-                      } else {
-                        // Fallback if formbutton not loaded
-                        window.open('https://formspree.io/f/mjkppvla', '_blank');
-                      }
-                    }}
-                    className="rounded-full shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:scale-105 transition-all duration-300 px-8 py-4"
-                  >
-                    <MessageSquare className="mr-2 w-5 h-5" />
-                    Open Contact Form
-                  </Button>
-
-                  <p className="text-sm text-muted-foreground mt-4">
-                    Click to open our secure contact form powered by Formspree
-                  </p>
-                </div>
-
-                {/* Alternative: Direct Formspree HTML Form (hidden but functional) */}
+                {/* Formspree HTML Form */}
                 <form
                   action="https://formspree.io/f/mjkppvla"
                   method="POST"
-                  className="hidden"
+                  className="space-y-5 sm:space-y-6"
                 >
-                  <input type="text" name="name" required />
-                  <input type="email" name="email" required />
-                  <input type="text" name="phone" />
-                  <input type="text" name="subject" required />
-                  <textarea name="message" required></textarea>
-                  <button type="submit">Submit</button>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+                    <div>
+                      <label htmlFor="name" className="block mb-2 text-sm font-medium">
+                        Name *
+                      </label>
+                      <input
+                        id="name"
+                        name="name"
+                        type="text"
+                        placeholder="Your name"
+                        className="w-full px-4 py-3 bg-background/50 border border-primary/20 rounded-lg focus:border-primary focus:outline-none transition-colors"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="email" className="block mb-2 text-sm font-medium">
+                        Email *
+                      </label>
+                      <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        placeholder="your@email.com"
+                        className="w-full px-4 py-3 bg-background/50 border border-primary/20 rounded-lg focus:border-primary focus:outline-none transition-colors"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor="phone" className="block mb-2 text-sm font-medium">
+                      Phone
+                    </label>
+                    <input
+                      id="phone"
+                      name="phone"
+                      type="text"
+                      placeholder="Your phone number"
+                      className="w-full px-4 py-3 bg-background/50 border border-primary/20 rounded-lg focus:border-primary focus:outline-none transition-colors"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="subject" className="block mb-2 text-sm font-medium">
+                      Subject *
+                    </label>
+                    <input
+                      id="subject"
+                      name="subject"
+                      type="text"
+                      placeholder="What's this about?"
+                      className="w-full px-4 py-3 bg-background/50 border border-primary/20 rounded-lg focus:border-primary focus:outline-none transition-colors"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="message" className="block mb-2 text-sm font-medium">
+                      Message *
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      placeholder="Tell us what you need"
+                      rows={5}
+                      className="w-full px-4 py-3 bg-background/50 border border-primary/20 rounded-lg focus:border-primary focus:outline-none transition-colors resize-none"
+                      required
+                    />
+                  </div>
+
+                  <Button
+                    type="submit"
+                    className="w-full rounded-full shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:scale-105 transition-all duration-300"
+                  >
+                    Send Message <Send className="ml-2 w-4 h-4" />
+                  </Button>
                 </form>
               </div>
             </div>
