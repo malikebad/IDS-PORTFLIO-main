@@ -29,9 +29,16 @@ const Contact = () => {
   });
   const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success">("idle");
 
-  // Load Formspree script
+  // Load Formspree script and initialize form
   useEffect(() => {
-    // Check if script is already loaded
+    // Initialize formbutton queue if it doesn't exist
+    if (!window.formbutton) {
+      window.formbutton = function() {
+        (window.formbutton.q = window.formbutton.q || []).push(arguments);
+      };
+    }
+
+    // Load Formspree script if not already loaded
     if (!document.querySelector('script[src="https://formspree.io/js/formbutton-v1.min.js"]')) {
       const script = document.createElement('script');
       script.src = 'https://formspree.io/js/formbutton-v1.min.js';
@@ -39,74 +46,126 @@ const Contact = () => {
       document.head.appendChild(script);
 
       script.onload = () => {
-        // Initialize Formspree button
-        if (window.formbutton) {
-          window.formbutton("create", {
-            action: "https://formspree.io/f/mjkppvla",
-            title: "Send us a message",
-            fields: [
-              {
-                type: "text",
-                label: "Name:",
-                name: "name",
-                required: true,
-                placeholder: "Your name"
-              },
-              {
-                type: "email",
-                label: "Email:",
-                name: "email",
-                required: true,
-                placeholder: "your@email.com"
-              },
-              {
-                type: "text",
-                label: "Phone:",
-                name: "phone",
-                required: false,
-                placeholder: "Your phone number"
-              },
-              {
-                type: "text",
-                label: "Subject:",
-                name: "subject",
-                required: true,
-                placeholder: "What's this about?"
-              },
-              {
-                type: "textarea",
-                label: "Message:",
-                name: "message",
-                required: true,
-                placeholder: "Tell us what you need"
-              },
-              { type: "submit" }
-            ],
-            styles: {
-              title: {
-                backgroundColor: "hsl(75, 92%, 58%)",
-                color: "white",
-                fontFamily: "Poppins, sans-serif"
-              },
-              button: {
-                backgroundColor: "hsl(75, 92%, 58%)",
-                color: "white",
-                borderRadius: "9999px",
-                fontFamily: "Inter, sans-serif"
-              },
-              modal: {
-                borderRadius: "16px"
-              }
+        // Initialize the form button after script loads
+        window.formbutton("create", {
+          action: "https://formspree.io/f/mjkppvla",
+          title: "Send us a message",
+          fields: [
+            {
+              type: "text",
+              label: "Name:",
+              name: "name",
+              required: true,
+              placeholder: "Your name"
             },
-            onSubmit: () => {
-              toast({
-                title: "Message Sent Successfully!",
-                description: "Thank you for contacting us. We'll get back to you within 24 hours.",
-              });
+            {
+              type: "email",
+              label: "Email:",
+              name: "email",
+              required: true,
+              placeholder: "your@email.com"
+            },
+            {
+              type: "text",
+              label: "Phone:",
+              name: "phone",
+              required: false,
+              placeholder: "Your phone number"
+            },
+            {
+              type: "text",
+              label: "Subject:",
+              name: "subject",
+              required: true,
+              placeholder: "What's this about?"
+            },
+            {
+              type: "textarea",
+              label: "Message:",
+              name: "message",
+              required: true,
+              placeholder: "Tell us what you need"
+            },
+            { type: "submit" }
+          ],
+          styles: {
+            title: {
+              backgroundColor: "hsl(75, 92%, 58%)",
+              color: "white",
+              fontFamily: "Poppins, sans-serif"
+            },
+            button: {
+              backgroundColor: "hsl(75, 92%, 58%)",
+              color: "white",
+              borderRadius: "9999px",
+              fontFamily: "Inter, sans-serif"
+            },
+            modal: {
+              borderRadius: "16px"
             }
-          });
-        }
+          }
+        });
       };
+    } else {
+      // Script already loaded, initialize immediately
+      window.formbutton("create", {
+        action: "https://formspree.io/f/mjkppvla",
+        title: "Send us a message",
+        fields: [
+          {
+            type: "text",
+            label: "Name:",
+            name: "name",
+            required: true,
+            placeholder: "Your name"
+          },
+          {
+            type: "email",
+            label: "Email:",
+            name: "email",
+            required: true,
+            placeholder: "your@email.com"
+          },
+          {
+            type: "text",
+            label: "Phone:",
+            name: "phone",
+            required: false,
+            placeholder: "Your phone number"
+          },
+          {
+            type: "text",
+            label: "Subject:",
+            name: "subject",
+            required: true,
+            placeholder: "What's this about?"
+          },
+          {
+            type: "textarea",
+            label: "Message:",
+            name: "message",
+            required: true,
+            placeholder: "Tell us what you need"
+          },
+          { type: "submit" }
+        ],
+        styles: {
+          title: {
+            backgroundColor: "hsl(75, 92%, 58%)",
+            color: "white",
+            fontFamily: "Poppins, sans-serif"
+          },
+          button: {
+            backgroundColor: "hsl(75, 92%, 58%)",
+            color: "white",
+            borderRadius: "9999px",
+            fontFamily: "Inter, sans-serif"
+          },
+          modal: {
+            borderRadius: "16px"
+          }
+        }
+      });
     }
   }, [toast]);
 
@@ -291,14 +350,28 @@ const Contact = () => {
 
                 {/* Formspree Button Container */}
                 <div className="text-center">
+                  <div id="formspree-button-container"></div>
+
                   <Button
                     onClick={() => {
+                      // Try to trigger Formspree modal
                       if (window.formbutton) {
-                        // Trigger Formspree modal
-                        const formButton = document.querySelector('[data-formspree]');
-                        if (formButton) {
-                          (formButton as HTMLElement).click();
+                        try {
+                          // Create a temporary button to trigger the modal
+                          const tempButton = document.createElement('button');
+                          tempButton.setAttribute('data-formspree', '');
+                          tempButton.style.display = 'none';
+                          document.body.appendChild(tempButton);
+                          tempButton.click();
+                          document.body.removeChild(tempButton);
+                        } catch (error) {
+                          console.error('Formspree modal trigger failed:', error);
+                          // Fallback: open form in new tab
+                          window.open('https://formspree.io/f/mjkppvla', '_blank');
                         }
+                      } else {
+                        // Fallback if formbutton not loaded
+                        window.open('https://formspree.io/f/mjkppvla', '_blank');
                       }
                     }}
                     className="rounded-full shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:scale-105 transition-all duration-300 px-8 py-4"
