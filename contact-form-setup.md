@@ -52,7 +52,7 @@ New Contact Form Message: {{subject}}
         <hr style="margin: 30px 0; border: none; border-top: 1px solid #e9ecef;">
 
         <p style="color: #6c757d; font-size: 14px;">
-            This message was sent from the Inventer Studio website contact form.
+            This message was sent from the Inventor Design Studio website contact form.
         </p>
     </div>
 </body>

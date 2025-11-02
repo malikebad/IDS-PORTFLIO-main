@@ -101,7 +101,7 @@ const FAQ = () => {
                   <span className="absolute inset-y-0 left-3 flex items-center text-muted-foreground"><Search className="w-5 h-5" /></span>
                   <Input
                     value={query}
-                    onChange={(e: any) => setQuery(e.target.value)}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setQuery(e.target.value)}
                     placeholder="Search FAQs, topics, or keywords..."
                     className="pl-12"
                   />

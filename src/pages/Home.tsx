@@ -481,7 +481,7 @@ const Home = () => {
                   <div className="absolute inset-0 overflow-hidden">
                     <img
                         src={project.image}
-                        alt={`${project.title} - ${project.category} project by Inventer Studio`}
+                        alt={`${project.title} - ${project.category} project by Inventor Design Studio`}
                         loading="lazy"
                         decoding="async"
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-125"

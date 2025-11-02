@@ -1,4 +1,4 @@
-# Google Indexing Instructions for Inventer Studio Website
+# Google Indexing Instructions for Inventor Design Studio Website
 
 ## 📋 **Pre-Deployment Checklist**
 

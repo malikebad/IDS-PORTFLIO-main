@@ -114,8 +114,8 @@ const TermsOfService = () => {
             <section className="min-w-0">
               <div className="prose prose-sm dark:prose-invert max-w-none space-y-8">
                 <p>
-                  Welcome to Inventer Design Studio ("Company," "we," "our," or "us"). By using our website
-                  (www.inventerdesignstudio.com) and related services, you ("User," "you," or "your") agree to
+                  Welcome to Inventor Design Studio ("Company," "we," "our," or "us"). By using our website
+                  (www.inventordesignstudio.com) and related services, you ("User," "you," or "your") agree to
                   the following Terms of Service. If you do not agree with these terms, do not use our services.
                 </p>
 

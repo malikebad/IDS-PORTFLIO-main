@@ -1,7 +1,7 @@
-# Inventer Studio - Creative Technology Studio
+# Inventor Design Studio - Creative Technology Studio
 
 ## About
-Inventer Studio is a leading creative technology studio specializing in software development, UI/UX design, video production, and digital experiences. Founded in 2018, we bridge the gap between cutting-edge technology and compelling storytelling to create digital products that scale and stories that sell.
+Inventor Design Studio is a leading creative technology studio specializing in software development, UI/UX design, video production, and digital experiences. Founded in 2018, we bridge the gap between cutting-edge technology and compelling storytelling to create digital products that scale and stories that sell.
 
 ## Services
 - **Software Development**: Full-stack web applications, SaaS platforms, mobile apps
@@ -48,7 +48,7 @@ Website: https://inventerstudio.com
 {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Inventer Studio",
+  "name": "Inventor Design Studio",
   "url": "https://inventerstudio.com",
   "logo": "https://inventerstudio.com/ids-logo.png",
   "description": "Leading creative technology studio specializing in software development, UI/UX design, video production, and digital experiences.",
@@ -108,7 +108,7 @@ Website: https://inventerstudio.com
 - SOC 2 compliant infrastructure
 
 ## Unique Value Proposition
-Inventer Studio uniquely combines technical excellence with creative storytelling, delivering solutions that don't just function—they inspire and drive business results. Our multidisciplinary approach ensures every project benefits from both engineering precision and artistic vision.
+Inventor Design Studio uniquely combines technical excellence with creative storytelling, delivering solutions that don't just function—they inspire and drive business results. Our multidisciplinary approach ensures every project benefits from both engineering precision and artistic vision.
 
 ## Client Testimonials
 - "They shipped our SaaS MVP in 6 weeks and it scaled to 50k users with zero downtime." - CTO, FinTech Co.
@@ -149,4 +149,4 @@ Inventer Studio uniquely combines technical excellence with creative storytellin
 - Community involvement and education
 
 ## Future Vision
-Inventer Studio continues to push boundaries in creative technology, exploring emerging technologies like AI, AR/VR, blockchain, and quantum computing to deliver next-generation digital experiences that shape the future of business and society.
+Inventor Design Studio continues to push boundaries in creative technology, exploring emerging technologies like AI, AR/VR, blockchain, and quantum computing to deliver next-generation digital experiences that shape the future of business and society.
