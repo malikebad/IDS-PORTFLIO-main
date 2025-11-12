@@ -24,7 +24,7 @@ Disallow: /node_modules/
 Disallow: /.git/
 
 # Sitemap
-Sitemap: https://inventerstudio.com/sitemap.xml
+Sitemap: https://inventerdesignstudio.com/sitemap.xml
 
 # Crawl delay (optional)
 Crawl-delay: 1
