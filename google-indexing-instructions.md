@@ -3,16 +3,16 @@
 ## 📋 **Pre-Deployment Checklist**
 
 ### 1. **Domain & Hosting Setup**
-- [ ] Purchase domain: `inventerstudio.com`
+- [ ] Purchase domain: `inventerdesignstudio.com`
 - [ ] Set up hosting (Vercel, Netlify, AWS, etc.)
 - [ ] Configure SSL certificate (HTTPS)
 - [ ] Deploy website to production
 
 ### 2. **Google Search Console Setup**
 - [ ] Create Google Search Console account
-- [ ] Add property: `https://inventerstudio.com`
+- [ ] Add property: `https://inventerdesignstudio.com`
 - [ ] Verify ownership using HTML meta tag method
-- [ ] Submit sitemap: `https://inventerstudio.com/sitemap.xml`
+- [ ] Submit sitemap: `https://inventerdesignstudio.com/sitemap.xml`
 
 ### 3. **Google Analytics Setup** (Optional but Recommended)
 - [ ] Create Google Analytics 4 property
@@ -25,16 +25,16 @@
 
 1. **Submit Sitemap to Google**
    ```
-   URL: https://www.google.com/webmasters/tools/ping?sitemap=https://inventerstudio.com/sitemap.xml
+   URL: https://www.google.com/webmasters/tools/ping?sitemap=https://inventerdesignstudio.com/sitemap.xml
    ```
    *Note: Direct ping is deprecated, but sitemap submission through GSC is preferred*
 
 2. **Request Indexing for Key Pages**
-   - Homepage: `https://inventerstudio.com/`
-   - Services: `https://inventerstudio.com/services`
-   - Portfolio: `https://inventerstudio.com/portfolio`
-   - About: `https://inventerstudio.com/about`
-   - Contact: `https://inventerstudio.com/contact`
+   - Homepage: `https://inventerdesignstudio.com/`
+   - Services: `https://inventerdesignstudio.com/services`
+   - Portfolio: `https://inventerdesignstudio.com/portfolio`
+   - About: `https://inventerdesignstudio.com/about`
+   - Contact: `https://inventerdesignstudio.com/contact`
 
 ### **Google Search Console Actions**
 
