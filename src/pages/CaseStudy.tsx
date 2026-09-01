@@ -5,12 +5,12 @@ import Navigation from '../components/Navigation';
 import SEO from '../components/SEO';
 import { getBreadcrumbSchema, getImageObjectSchema } from '../lib/structuredData';
 // ✅ CORRECTED IMPORTS
-import ArchitectureInteriorDesign from '../assets/architectureinteriordesign.png';
-import BrandingIdentity from '../assets/brandingidentity.png';
-import SocialMediaContent from '../assets/socialmediacontent.png';
-import UIUXProductDesign from '../assets/uiuxproductdesign.png';
-import Visualization3DRendering from '../assets/visualization3drendering.png';
-import WebDevelopmentDesign from '../assets/webdevelopmentdesign.png';
+import ArchitectureInteriorDesign from '../assets/ArchitectureInteriorDesign.png';
+import BrandingIdentity from '../assets/BrandingIdentity.png';
+import SocialMediaContent from '../assets/SocialMediaContent.png';
+import UIUXProductDesign from '../assets/UIUXProductDesign.png';
+import Visualization3DRendering from '../assets/Visualization3DRendering.png';
+import WebDevelopmentDesign from '../assets/WebDevelopmentDesign.png';
 
 // ✅ IMPORT REAL PROJECT IMAGES
 import shippingfullfilment from '../assets/shippingfullfilment.jpg';
