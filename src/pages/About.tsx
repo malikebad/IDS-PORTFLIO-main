@@ -2,6 +2,8 @@ import { useMemo, useState, useEffect } from "react";
 import { Target, Lightbulb, Award, Users, MapPin, Calendar, Briefcase, ArrowRight, ChevronRight, Star } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
+import { getBreadcrumbSchema } from "@/lib/structuredData";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import studioImage from "@/assets/about-studio.jpg";
 
@@ -45,18 +47,18 @@ const About = () => {
       <div className="space-y-4 sm:space-y-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
         <p>
           Founded in 2018, Inventer Design Studio emerged from a shared vision: to create
-          digital products and experiences that transcend trends and stand the test of time. What began as a
-          small collective of engineers and designers has evolved into a full-service digital
+          design solutions that transcend trends and stand the test of time. What began as a
+          small collective of architects and designers has evolved into a full-service design
           studio.
         </p>
         <p>
-          Our multidisciplinary approach brings together expertise in software engineering, UX,
-          branding, and digital experiences. We believe that great design happens at the
-          intersection of usefulness and delight, where creativity meets purpose.
+          Our multidisciplinary approach brings together expertise in architecture, interior
+          design, branding, and digital experiences. We believe that great design happens at
+          the intersection of form and function, where creativity meets purpose.
         </p>
         <p>
-          Today, we work with clients around the globe, building products and brands
-          through innovative thinking, rigorous engineering, and a relentless pursuit of
+          Today, we work with clients around the globe, transforming spaces and brands
+          through innovative thinking, meticulous craftsmanship, and a relentless pursuit of
           excellence.
         </p>
       </div>
@@ -135,6 +137,15 @@ const About = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="About Our Studio & Vision"
+        description="Learn about Inventor Design Studio: our multidisciplinary team of engineers, designers, and visual storytellers transforming digital experiences worldwide."
+        path="/about"
+        schema={getBreadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "About", url: "/about" },
+        ])}
+      />
       <Navigation />
 
       {/* Hero Section */}
@@ -162,7 +173,7 @@ const About = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
             <img
               src={studioImage}
-              alt="Inventer Design Studio creative workspace - modern office environment showcasing our design and development studio"
+              alt="Inventer Design Studio"
               className="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] object-cover transition-transform duration-700 group-hover:scale-105"
             />
             <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 md:p-10 z-20">

@@ -1,7 +1,9 @@
 import { useMemo, useState } from "react";
-import { Building, Palette, Smartphone, Package, ArrowRight, Check, ChevronRight, ArrowUpRight } from "lucide-react";
+import { Building, Palette, Smartphone, Package, ArrowRight, Check, ChevronRight, ArrowUpRight, Search, PenTool, Rocket } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
+import { getServiceSchema, getBreadcrumbSchema } from "@/lib/structuredData";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -12,33 +14,17 @@ const Services = () => {
   // Services data extracted to a constant outside the component for better performance
   const SERVICES_DATA = [
     {
-      icon: Smartphone,
-      title: "UI/UX & Web Design",
+      icon: Building,
+      title: "Architecture & Interiors",
       description:
-        "Designing intuitive, engaging digital interfaces for web and mobile that drive engagement and conversions.",
+        "From conceptual design to construction documentation, we create spaces that inspire and function beautifully. Our architectural solutions blend innovation with timeless design principles.",
       features: [
-        "User Research",
-        "Prototyping & Testing",
-        "Responsive Web Design",
-        "Interaction Design",
+        "Residential Architecture",
+        "Commercial Spaces",
+        "Interior Design",
+        "Space Planning",
       ],
-      cta: "View Design Services",
-      color: "from-primary to-primary-foreground",
-      bgColor: "bg-primary/10",
-      textColor: "text-primary",
-    },
-    {
-      icon: Package,
-      title: "Web & Mobile Development",
-      description:
-        "Full‑stack development delivering robust, scalable web and mobile applications using modern frameworks and best practices.",
-      features: [
-        "Frontend Development",
-        "Backend APIs",
-        "Progressive Web Apps",
-        "Third‑party Integrations",
-      ],
-      cta: "Explore Development Services",
+      cta: "Explore Architecture Services",
       color: "from-blue-500 to-indigo-600",
       bgColor: "bg-blue-500/10",
       textColor: "text-blue-500",
@@ -47,12 +33,12 @@ const Services = () => {
       icon: Palette,
       title: "Branding & Identity",
       description:
-        "We craft distinctive brand identities that resonate with your audience and help your product stand out in the market.",
+        "We craft distinctive brand identities that resonate with your audience and stand out in the market. From logos to complete brand systems, we ensure consistency and impact.",
       features: [
         "Brand Strategy",
-        "Logo & Visual Identity",
-        "Design Systems",
-        "Launch Collateral",
+        "Logo Design",
+        "Visual Identity Systems",
+        "Brand Guidelines",
       ],
       cta: "Discover Branding Solutions",
       color: "from-amber-500 to-orange-600",
@@ -60,17 +46,33 @@ const Services = () => {
       textColor: "text-amber-500",
     },
     {
-      icon: Building,
-      title: "DevOps & Cloud",
+      icon: Smartphone,
+      title: "UI/UX & Web Design",
       description:
-        "Reliable deployment, CI/CD pipelines, and cloud infrastructure to keep your applications performant, secure, and scalable.",
+        "Creating digital experiences that are intuitive, engaging, and beautiful. We design interfaces that users love and that drive measurable results for your business.",
       features: [
-        "Cloud Architecture",
-        "CI/CD Automation",
-        "Monitoring & Observability",
-        "Security & Compliance",
+        "Website Design",
+        "Mobile App Design",
+        "User Experience Research",
+        "Prototyping & Testing",
       ],
-      cta: "See DevOps Services",
+      cta: "View Digital Design Services",
+      color: "from-primary to-primary-foreground",
+      bgColor: "bg-primary/10",
+      textColor: "text-primary",
+    },
+    {
+      icon: Package,
+      title: "Visualization & 3D Rendering",
+      description:
+        "Bring your projects to life before they're built. Our photorealistic 3D renderings and animations help you visualize and communicate your design vision effectively.",
+      features: [
+        "Architectural Visualization",
+        "Interior Renderings",
+        "3D Animations",
+        "Virtual Reality Tours",
+      ],
+      cta: "See Visualization Work",
       color: "from-emerald-500 to-teal-600",
       bgColor: "bg-emerald-500/10",
       textColor: "text-emerald-500",
@@ -82,6 +84,18 @@ const Services = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Services & Capabilities | Software, UI/UX & Video"
+        description="Comprehensive creative technology studio services: full-stack software development, UI/UX product design, branding systems, 3D visualization, and cinematic video production."
+        path="/services"
+        schema={[
+          getServiceSchema(),
+          getBreadcrumbSchema([
+            { name: "Home", url: "/" },
+            { name: "Services", url: "/services" },
+          ]),
+        ]}
+      />
       <Navigation />
 
       {/* Hero Section */}
@@ -194,47 +208,50 @@ const Services = () => {
                 title: "Discovery",
                 description:
                   "We start by understanding your goals, challenges, and vision through in-depth consultations.",
-                icon: "🔍",
+                icon: Search,
               },
               {
                 step: "02",
                 title: "Design",
                 description:
                   "Our team develops creative concepts and refines them based on your feedback and requirements.",
-                icon: "✏️",
+                icon: PenTool,
               },
               {
                 step: "03",
                 title: "Delivery",
                 description:
                   "We bring the design to life with meticulous execution and ongoing support to ensure success.",
-                icon: "🚀",
+                icon: Rocket,
               },
-            ].map((phase, index) => (
-              <div
-                key={phase.step}
-                className="group relative bg-card/50 backdrop-blur-sm rounded-2xl border border-primary/10 p-8 text-center space-y-5 animate-slide-up hover:border-primary/20 hover:shadow-lg transition-all duration-300"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-background border border-primary/20 flex items-center justify-center text-xl z-10">
-                  {phase.icon}
-                </div>
-                
-                <div className="text-5xl sm:text-6xl font-bold bg-gradient-to-r from-primary/40 to-primary bg-clip-text text-transparent group-hover:from-primary group-hover:to-primary-foreground transition-all duration-300">
-                  {phase.step}
-                </div>
-                
-                <h3 className="text-xl sm:text-2xl font-bold group-hover:text-primary transition-colors">{phase.title}</h3>
-                
-                <p className="text-sm sm:text-base text-muted-foreground">{phase.description}</p>
-                
-                <div className="pt-2">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mx-auto group-hover:bg-primary/20 transition-colors">
-                    <ChevronRight className="w-5 h-5 text-primary" />
+            ].map((phase, index) => {
+              const IconComponent = phase.icon;
+              return (
+                <div
+                  key={phase.step}
+                  className="group relative bg-card/50 backdrop-blur-sm rounded-2xl border border-primary/10 p-8 text-center space-y-5 animate-slide-up hover:border-primary/20 hover:shadow-lg transition-all duration-300"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-background border border-primary/30 flex items-center justify-center text-primary group-hover:scale-110 group-hover:bg-primary/10 transition-all duration-300 shadow-md z-10">
+                    <IconComponent className="w-5 h-5 text-primary" />
+                  </div>
+                  
+                  <div className="text-5xl sm:text-6xl font-bold bg-gradient-to-r from-primary/40 to-primary bg-clip-text text-transparent group-hover:from-primary group-hover:to-primary-foreground transition-all duration-300">
+                    {phase.step}
+                  </div>
+                  
+                  <h3 className="text-xl sm:text-2xl font-bold group-hover:text-primary transition-colors">{phase.title}</h3>
+                  
+                  <p className="text-sm sm:text-base text-muted-foreground">{phase.description}</p>
+                  
+                  <div className="pt-2">
+                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mx-auto group-hover:bg-primary/20 transition-colors">
+                      <ChevronRight className="w-5 h-5 text-primary" />
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

@@ -1,7 +1,10 @@
 import { useState, useCallback, useMemo } from "react";
-import { Mail, Phone, MapPin, Send, ArrowRight, Clock, MessageSquare } from "lucide-react";
+import { Mail, Phone, MapPin, Send, ArrowRight, Clock, MessageSquare, Loader2 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
+import { getBreadcrumbSchema } from "@/lib/structuredData";
+import { trackEvent } from "@/lib/analytics";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -19,57 +22,49 @@ const Contact = () => {
     phone: "",
     subject: "",
     message: "",
+    _hp_company: "", // Anti-spam honeypot
   });
   const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success">("idle");
-
 
   const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
     setFormStatus("submitting");
 
     try {
-      // Send form data to Formspree
-      const response = await fetch("https://formspree.io/f/mjkppvla", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          subject: formData.subject,
-          message: formData.message,
-          _subject: `Contact Form: ${formData.subject}`,
-          _replyto: formData.email,
-        }),
+        body: JSON.stringify(formData),
       });
 
-      if (response.ok) {
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        trackEvent("contact_form_submitted", { subject: formData.subject });
         toast({
           title: "Message Sent Successfully!",
-          description: "Thank you for contacting us. We'll get back to you within 24 hours.",
+          description: "Thank you for reaching out. We have sent a confirmation to your email and will be in touch shortly.",
         });
-
-        setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+        setFormData({ name: "", email: "", phone: "", subject: "", message: "", _hp_company: "" });
         setFormStatus("success");
-
-        // Reset form status after showing success
-        setTimeout(() => setFormStatus("idle"), 5000);
       } else {
-        throw new Error("Failed to send message");
+        throw new Error(data.error || "Something went wrong while sending your message.");
       }
-
-    } catch (error) {
-      console.error("Form submission error:", error);
+    } catch (err: any) {
       toast({
-        title: "Message Failed to Send",
-        description: "Please try again or contact us directly at info@inventerdesignstudio.com",
+        title: "Submission Error",
+        description: err.message || "Failed to send message. Please try again or email us directly.",
         variant: "destructive",
       });
       setFormStatus("idle");
+    } finally {
+      setTimeout(() => {
+        setFormStatus((current) => (current === "success" ? "idle" : current));
+      }, 4000);
     }
-  }, [toast, formData]);
+  }, [formData, toast]);
 
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData((prev) => ({
@@ -81,6 +76,15 @@ const Contact = () => {
   return (
     <ErrorBoundary>
       <div className="min-h-screen bg-background">
+        <SEO
+          title="Contact Us & Project Consultation"
+          description="Ready to build something extraordinary? Get in touch with Inventor Design Studio for project scoping, software engineering, and video production consultations."
+          path="/contact"
+          schema={getBreadcrumbSchema([
+            { name: "Home", url: "/" },
+            { name: "Contact", url: "/contact" },
+          ])}
+        />
         <Navigation />
         <BackToTop />
 
@@ -193,127 +197,116 @@ const Contact = () => {
             <div className="animate-slide-up">
               <div className="bg-card/50 backdrop-blur-sm rounded-2xl p-6 sm:p-8 md:p-10 shadow-lg border border-primary/10 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10" />
-
+                
                 <div className="flex items-center space-x-3 mb-6">
                   <MessageSquare className="w-5 h-5 text-primary" />
                   <h2 className="text-xl sm:text-2xl font-bold">Send us a message</h2>
                 </div>
+                
+                <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
+                  {/* Anti-spam honeypot (hidden from real users) */}
+                  <div className="hidden" aria-hidden="true" tabIndex={-1}>
+                    <label htmlFor="_hp_company">Company Website</label>
+                    <input
+                      type="text"
+                      id="_hp_company"
+                      name="_hp_company"
+                      value={formData._hp_company}
+                      onChange={handleChange}
+                      autoComplete="off"
+                    />
+                  </div>
 
-                {/* Formspree HTML Form with AJAX submission */}
-                <form
-                  id="contact-form"
-                  className="space-y-5 sm:space-y-6"
-                >
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
                     <div>
                       <label htmlFor="name" className="block mb-2 text-sm font-medium">
-                        Name *
+                        Name
                       </label>
-                      <input
+                      <Input
                         id="name"
                         name="name"
-                        type="text"
+                        value={formData.name}
+                        onChange={handleChange}
                         placeholder="Your name"
-                        className="w-full px-4 py-3 bg-background/50 border border-primary/20 rounded-lg focus:border-primary focus:outline-none transition-colors"
+                        className="bg-background/50 border-primary/20 focus:border-primary"
                         required
+                        autoFocus
                       />
                     </div>
                     <div>
                       <label htmlFor="email" className="block mb-2 text-sm font-medium">
-                        Email *
+                        Email
                       </label>
-                      <input
+                      <Input
                         id="email"
                         name="email"
                         type="email"
-                        placeholder="your@email.com"
-                        className="w-full px-4 py-3 bg-background/50 border border-primary/20 rounded-lg focus:border-primary focus:outline-none transition-colors"
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="Your email"
+                        className="bg-background/50 border-primary/20 focus:border-primary"
                         required
                       />
                     </div>
                   </div>
-
                   <div>
                     <label htmlFor="phone" className="block mb-2 text-sm font-medium">
                       Phone
                     </label>
-                    <input
+                    <MaskedInput
                       id="phone"
                       name="phone"
-                      type="text"
+                      mask="+99 999 9999999"
+                      value={formData.phone}
+                      onChange={handleChange}
                       placeholder="Your phone number"
-                      className="w-full px-4 py-3 bg-background/50 border border-primary/20 rounded-lg focus:border-primary focus:outline-none transition-colors"
+                      className="bg-background/50 border-primary/20 focus:border-primary"
                     />
                   </div>
 
                   <div>
                     <label htmlFor="subject" className="block mb-2 text-sm font-medium">
-                      Subject *
+                      Subject
                     </label>
-                    <input
+                    <Input
                       id="subject"
                       name="subject"
-                      type="text"
+                      value={formData.subject}
+                      onChange={handleChange}
                       placeholder="What's this about?"
-                      className="w-full px-4 py-3 bg-background/50 border border-primary/20 rounded-lg focus:border-primary focus:outline-none transition-colors"
+                      className="bg-background/50 border-primary/20 focus:border-primary"
                       required
                     />
                   </div>
 
                   <div>
                     <label htmlFor="message" className="block mb-2 text-sm font-medium">
-                      Message *
+                      Message
                     </label>
-                    <textarea
+                    <Textarea
                       id="message"
                       name="message"
+                      value={formData.message}
+                      onChange={handleChange}
                       placeholder="Tell us what you need"
                       rows={5}
-                      className="w-full px-4 py-3 bg-background/50 border border-primary/20 rounded-lg focus:border-primary focus:outline-none transition-colors resize-none"
+                      className="bg-background/50 border-primary/20 focus:border-primary resize-none"
                       required
                     />
                   </div>
 
-                  <Button
-                    type="button"
-                    onClick={async (e) => {
-                      e.preventDefault();
-                      const form = document.getElementById('contact-form') as HTMLFormElement;
-                      if (!form) return;
-
-                      const formData = new FormData(form);
-                      const data = Object.fromEntries(formData.entries());
-
-                      try {
-                        const response = await fetch("https://formspree.io/f/mjkppvla", {
-                          method: "POST",
-                          body: formData,
-                          headers: {
-                            'Accept': 'application/json'
-                          }
-                        });
-
-                        if (response.ok) {
-                          toast({
-                            title: "Message Sent Successfully!",
-                            description: "Thank you for contacting us. We'll get back to you within 24 hours.",
-                          });
-                          form.reset();
-                        } else {
-                          throw new Error('Form submission failed');
-                        }
-                      } catch (error) {
-                        console.error('Form submission error:', error);
-                        toast({
-                          title: "Message Failed to Send",
-                          description: "Please try again or contact us directly at info@inventerdesignstudio.com",
-                          variant: "destructive",
-                        });
-                      }
-                    }}
+                  <Button 
+                    type="submit" 
                     className="w-full rounded-full shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:scale-105 transition-all duration-300"
+                    disabled={formStatus !== "idle"}
                   >
-                    Send Message <Send className="ml-2 w-4 h-4" />
+                    {formStatus === "idle" && (
+                      <>
+                        Send Message <Send className="ml-2 w-4 h-4" />
+                      </>
+                    )}
+                    {formStatus === "submitting" && "Sending..."}
+                    {formStatus === "success" && "Message Sent!"}
                   </Button>
                 </form>
               </div>

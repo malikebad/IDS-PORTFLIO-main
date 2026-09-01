@@ -1,69 +1,46 @@
-import { Link } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
+import { useEffect } from "react";
+import { ArrowLeft, Compass } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Home, ArrowLeft, Search } from "lucide-react";
+import SEO from "@/components/SEO";
 
 const NotFound = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    console.warn("404 Error: Non-existent route accessed:", location.pathname);
+  }, [location.pathname]);
+
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center px-4">
-      <div className="text-center space-y-8 max-w-lg">
-        {/* Animated 404 */}
-        <div className="relative">
-          <h1 className="text-8xl sm:text-9xl font-bold text-primary animate-pulse">404</h1>
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent blur-3xl -z-10" />
-        </div>
+    <div className="flex min-h-screen items-center justify-center bg-background text-foreground px-4 relative overflow-hidden">
+      <SEO
+        title="404 - Page Not Found"
+        description="The page you are looking for could not be found."
+        path={location.pathname}
+        noindex={true}
+      />
 
-        {/* Content */}
-        <div className="space-y-4">
-          <h2 className="text-3xl sm:text-4xl font-bold">Oops! Page Not Found</h2>
-          <p className="text-muted-foreground text-lg leading-relaxed">
-            The page you're looking for doesn't exist, has been moved, or the URL might be incorrect.
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:40px_40px]" />
+      <div className="absolute top-1/3 left-1/3 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
+
+      <div className="relative z-10 text-center max-w-md mx-auto space-y-6 p-8 rounded-2xl bg-card/40 backdrop-blur-xl border border-border/50 shadow-2xl">
+        <div className="w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto text-primary">
+          <Compass className="w-8 h-8 animate-spin-slow" />
+        </div>
+        <div className="space-y-2">
+          <h1 className="text-5xl sm:text-6xl font-extrabold bg-gradient-to-r from-white via-white to-white/60 bg-clip-text text-transparent">
+            404
+          </h1>
+          <p className="text-lg sm:text-xl font-semibold text-foreground">Page Not Found</p>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            The link you followed may be broken or the page may have been moved.
           </p>
         </div>
-
-        {/* Search suggestion */}
-        <div className="bg-card/50 backdrop-blur-sm rounded-2xl p-6 border border-primary/10">
-          <div className="flex items-center justify-center space-x-2 mb-3">
-            <Search className="w-5 h-5 text-primary" />
-            <span className="text-sm font-medium">Try these pages instead:</span>
-          </div>
-          <div className="grid grid-cols-2 gap-3 text-sm">
-            <Link to="/" className="text-primary hover:underline">Home</Link>
-            <Link to="/about" className="text-primary hover:underline">About</Link>
-            <Link to="/services" className="text-primary hover:underline">Services</Link>
-            <Link to="/portfolio" className="text-primary hover:underline">Portfolio</Link>
-            <Link to="/contact" className="text-primary hover:underline">Contact</Link>
-            <Link to="/faq" className="text-primary hover:underline">FAQ</Link>
-          </div>
-        </div>
-
-        {/* Action buttons */}
-        <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <Button asChild size="lg" className="shadow-lg shadow-primary/20 hover:shadow-primary/40">
-            <Link to="/" className="flex items-center">
-              <Home className="mr-2 h-5 w-5" />
-              Go to Homepage
-            </Link>
-          </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            onClick={() => window.history.back()}
-            className="hover:bg-primary/10"
-          >
-            <ArrowLeft className="mr-2 h-5 w-5" />
-            Go Back
-          </Button>
-        </div>
-
-        {/* Contact CTA */}
-        <div className="pt-6 border-t border-border/50">
-          <p className="text-sm text-muted-foreground mb-3">
-            Can't find what you're looking for?
-          </p>
-          <Button variant="ghost" asChild className="text-primary hover:text-primary/80">
-            <Link to="/contact">Contact Us</Link>
-          </Button>
-        </div>
+        <Button asChild className="rounded-xl shadow-lg shadow-primary/20">
+          <Link to="/" className="flex items-center gap-2">
+            <ArrowLeft className="w-4 h-4" /> Return to Homepage
+          </Link>
+        </Button>
       </div>
     </div>
   );

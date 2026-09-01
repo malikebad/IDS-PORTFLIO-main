@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+
+  <!-- ========================================== -->
+  <!-- CORE PAGES                                 -->
+  <!-- ========================================== -->
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://inventordesignstudio.io/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://inventordesignstudio.io/assets/logo.jpeg</image:loc>
+      <image:title>Inventor Design Studio Official Logo</image:title>
+      <image:caption>Inventor Design Studio - Software Development &amp; Video Production</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Portfolio Overview -->
+  <url>
+    <loc>https://inventordesignstudio.io/portfolio</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://inventordesignstudio.io/assets/bakery.jpeg</image:loc>
+      <image:title>Bakery Faize Nagina Mobile App Showcase</image:title>
+      <image:caption>Cross-platform mobile ordering platform and inventory management</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://inventordesignstudio.io/assets/poseai.jpg</image:loc>
+      <image:title>Pose AI Computer Vision Application</image:title>
+      <image:caption>AI-powered real-time body movement and posture tracking</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://inventordesignstudio.io/assets/publicshop.jpg</image:loc>
+      <image:title>Bakery E-Commerce Web Platform</image:title>
+      <image:caption>Full-stack digital commerce and administrative dashboard</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://inventordesignstudio.io/assets/shippingfullfilment.jpg</image:loc>
+      <image:title>Lahore Plastic Logistics &amp; Fulfillment Experience</image:title>
+      <image:caption>Logistics transparency and supply chain UI/UX design</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Projects & Video Showreel -->
+  <url>
+    <loc>https://inventordesignstudio.io/projects</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <!-- Image Extensions -->
+    <image:image>
+      <image:loc>https://inventordesignstudio.io/assets/WebDevelopmentDesign-Dnii2poh.png</image:loc>
+      <image:title>Full Stack Web Architecture &amp; Engineering</image:title>
+      <image:caption>Enterprise web applications and scalable API platforms</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://inventordesignstudio.io/assets/BrandingIdentity-BFwbfyGf.png</image:loc>
+      <image:title>Corporate Branding &amp; Visual Identity Systems</image:title>
+      <image:caption>Brand strategy, typography guidelines, and design collateral</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://inventordesignstudio.io/assets/ArchitectureInteriorDesign-Dw9FBqa_.png</image:loc>
+      <image:title>Architectural Visualization &amp; Spatial Design</image:title>
+      <image:caption>Photorealistic interior rendering and structural concepts</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://inventordesignstudio.io/assets/UIUXProductDesign-B00xYZHG.png</image:loc>
+      <image:title>UI/UX Product Design &amp; Prototyping</image:title>
+      <image:caption>Accessible interface systems and user journey optimization</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://inventordesignstudio.io/assets/Visualization3DRendering-BM3akoyJ.png</image:loc>
+      <image:title>3D Product Rendering &amp; CGI Animation</image:title>
+      <image:caption>High-precision 3D modeling, lighting, and photorealistic CGI</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://inventordesignstudio.io/assets/SocialMediaContent-DNfQRlsX.png</image:loc>
+      <image:title>Social Media Video Production &amp; Content Strategy</image:title>
+      <image:caption>Short-form vertical video campaigns and motion design</image:caption>
+    </image:image>
+    <!-- Video Extensions -->
+    <video:video>
+      <video:thumbnail_loc>https://inventordesignstudio.io/assets/SocialMediaContent-DNfQRlsX.png</video:thumbnail_loc>
+      <video:title>Cinematic Color Grade Showcase Reel</video:title>
+      <video:description>Professional color grading, cinematic lighting, and mood transformation showreel by Inventor Design Studio.</video:description>
+      <video:player_loc>https://player.vimeo.com/video/1068495229</video:player_loc>
+      <video:publication_date>2025-01-15T08:00:00+00:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://inventordesignstudio.io/assets/SocialMediaContent-DNfQRlsX.png</video:thumbnail_loc>
+      <video:title>Athlete High-Impact Video Reel</video:title>
+      <video:description>Dynamic athletic motion cinematography, high-speed filming, and sound design reel.</video:description>
+      <video:player_loc>https://player.vimeo.com/video/1066154660</video:player_loc>
+      <video:publication_date>2025-01-20T08:00:00+00:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://inventordesignstudio.io/assets/SocialMediaContent-DNfQRlsX.png</video:thumbnail_loc>
+      <video:title>Pink Load Commercial Trailer Video</video:title>
+      <video:description>Narrative brand commercial and cinematic trailer produced for Pink Load.</video:description>
+      <video:player_loc>https://player.vimeo.com/video/1066093854</video:player_loc>
+      <video:publication_date>2025-02-01T08:00:00+00:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://inventordesignstudio.io/assets/SocialMediaContent-DNfQRlsX.png</video:thumbnail_loc>
+      <video:title>Guillaume Brand Story Reel</video:title>
+      <video:description>Luxury visual storytelling and editorial cinematography showreel for Guillaume.</video:description>
+      <video:player_loc>https://player.vimeo.com/video/1066091840</video:player_loc>
+      <video:publication_date>2025-02-10T08:00:00+00:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+
+  <!-- Services -->
+  <url>
+    <loc>https://inventordesignstudio.io/services</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- About Studio -->
+  <url>
+    <loc>https://inventordesignstudio.io/about</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://inventordesignstudio.io/assets/about-studio-BKYy41Bb.jpg</image:loc>
+      <image:title>Inventor Design Studio Team &amp; Workspace</image:title>
+      <image:caption>Multidisciplinary studio workspace and creative engineering team</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Frequently Asked Questions -->
+  <url>
+    <loc>https://inventordesignstudio.io/faq</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Contact Consultation -->
+  <url>
+    <loc>https://inventordesignstudio.io/contact</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Terms of Service -->
+  <url>
+    <loc>https://inventordesignstudio.io/terms-of-service</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.30</priority>
+  </url>
+
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://inventordesignstudio.io/privacy-policy</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.30</priority>
+  </url>
+
+  <!-- ========================================== -->
+  <!-- DEDICATED CASE STUDY URLS                  -->
+  <!-- ========================================== -->
+
+  <!-- 1. Bakery Faize Nagina Mobile App -->
+  <url>
+    <loc>https://inventordesignstudio.io/case-study/bakery-faize</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://inventordesignstudio.io/assets/bakery.jpeg</image:loc>
+      <image:title>Bakery Faize Nagina Mobile App Case Study</image:title>
+      <image:caption>Cross-platform Flutter application with real-time inventory and online ordering</image:caption>
+    </image:image>
+  </url>
+
+  <!-- 2. Pose AI Posture Application -->
+  <url>
+    <loc>https://inventordesignstudio.io/case-study/pose-ai</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://inventordesignstudio.io/assets/poseai.jpg</image:loc>
+      <image:title>Pose AI Intelligent Posture Tracking Case Study</image:title>
+      <image:caption>Computer vision and TensorFlow pose estimation mobile application</image:caption>
+    </image:image>
+  </url>
+
+  <!-- 3. Bakery Website E-Commerce -->
+  <url>
+    <loc>https://inventordesignstudio.io/case-study/public-shop</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://inventordesignstudio.io/assets/publicshop.jpg</image:loc>
+      <image:title>Bakery Web Platform Case Study</image:title>
+      <image:caption>Custom web ordering system and admin operations dashboard</image:caption>
+    </image:image>
+  </url>
+
+  <!-- 4. Lahore Plastic Fulfillment -->
+  <url>
+    <loc>https://inventordesignstudio.io/case-study/lahore-plastic</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://inventordesignstudio.io/assets/shippingfullfilment.jpg</image:loc>
+      <image:title>Lahore Plastic Shipping &amp; Logistics Hub Case Study</image:title>
+      <image:caption>Amazon FBA and FBM fulfillment transparency and customer trust platform</image:caption>
+    </image:image>
+  </url>
+
+  <!-- 5. Smart Logistics Dashboard -->
+  <url>
+    <loc>https://inventordesignstudio.io/case-study/1</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://inventordesignstudio.io/assets/WebDevelopmentDesign-Dnii2poh.png</image:loc>
+      <image:title>Smart Logistics Fleet Platform Case Study</image:title>
+      <image:caption>Real-time fleet tracking and automated dispatch management system</image:caption>
+    </image:image>
+  </url>
+
+  <!-- 6. Modern Corporate Identity -->
+  <url>
+    <loc>https://inventordesignstudio.io/case-study/2</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://inventordesignstudio.io/assets/BrandingIdentity-BFwbfyGf.png</image:loc>
+      <image:title>InnovateTech Brand Transformation Case Study</image:title>
+      <image:caption>Comprehensive corporate visual identity and typography system</image:caption>
+    </image:image>
+  </url>
+
+  <!-- 7. Luxury Villa Architecture -->
+  <url>
+    <loc>https://inventordesignstudio.io/case-study/3</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://inventordesignstudio.io/assets/ArchitectureInteriorDesign-Dw9FBqa_.png</image:loc>
+      <image:title>Contemporary Luxury Villa Architecture Case Study</image:title>
+      <image:caption>Open-concept architectural drawings and interior design plans</image:caption>
+    </image:image>
+  </url>
+
+  <!-- 8. E-Commerce Platform UX -->
+  <url>
+    <loc>https://inventordesignstudio.io/case-study/4</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://inventordesignstudio.io/assets/UIUXProductDesign-B00xYZHG.png</image:loc>
+      <image:title>ShopWave Retail E-Commerce UI/UX Case Study</image:title>
+      <image:caption>Mobile-first conversion optimization and streamlined checkout UX</image:caption>
+    </image:image>
+  </url>
+
+  <!-- 9. 3D Product Visualization -->
+  <url>
+    <loc>https://inventordesignstudio.io/case-study/5</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://inventordesignstudio.io/assets/Visualization3DRendering-BM3akoyJ.png</image:loc>
+      <image:title>Luxury Product 3D Rendering &amp; CGI Case Study</image:title>
+      <image:caption>Photorealistic 3D product renders and commercial marketing animation</image:caption>
+    </image:image>
+  </url>
+
+  <!-- 10. Social Media Campaign Strategy -->
+  <url>
+    <loc>https://inventordesignstudio.io/case-study/6</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://inventordesignstudio.io/assets/SocialMediaContent-DNfQRlsX.png</image:loc>
+      <image:title>Digital Growth Social Media Campaign Case Study</image:title>
+      <image:caption>Content strategy, visual asset production, and audience engagement</image:caption>
+    </image:image>
+  </url>
+
+  <!-- 11. Corporate Website Redesign -->
+  <url>
+    <loc>https://inventordesignstudio.io/case-study/7</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <image:image>
+      <image:loc>https://inventordesignstudio.io/assets/WebDevelopmentDesign-Dnii2poh.png</image:loc>
+      <image:title>Corporate Enterprise Website Redesign Case Study</image:title>
+      <image:caption>Clean responsive website architecture and corporate branding</image:caption>
+    </image:image>
+  </url>
+
+</urlset>

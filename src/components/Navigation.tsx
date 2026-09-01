@@ -19,15 +19,20 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
+  const mainNavLinks = [
     { name: "Home", path: "/" },
     { name: "Portfolio", path: "/portfolio" },
+    { name: "Projects", path: "/projects" },
     { name: "About", path: "/about" },
     { name: "Services", path: "/services" },
     { name: "FAQ", path: "/faq" },
-    { name: "Terms", path: "/terms-of-service" },
-    { name: "Privacy", path: "/privacy-policy" },
     { name: "Contact", path: "/contact" },
+  ];
+
+  const mobileNavLinks = [
+    ...mainNavLinks,
+    { name: "Terms of Service", path: "/terms-of-service" },
+    { name: "Privacy Policy", path: "/privacy-policy" },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -56,7 +61,7 @@ const Navigation = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-5 lg:space-x-8">
-            {navLinks.map((link, index) => (
+            {mainNavLinks.map((link, index) => (
               <motion.div
                 key={link.path}
                 initial={{ opacity: 0, y: -10 }}
@@ -120,7 +125,7 @@ const Navigation = () => {
             transition={{ duration: 0.3 }}
             className="md:hidden mt-3 pb-3 space-y-1 bg-card/95 backdrop-blur-xl rounded-xl p-4 shadow-md border border-border/50"
           >
-            {navLinks.map((link, index) => (
+            {mobileNavLinks.map((link, index) => (
               <motion.div
                 key={link.path}
                 initial={{ opacity: 0, x: -10 }}

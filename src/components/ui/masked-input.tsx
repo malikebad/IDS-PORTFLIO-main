@@ -15,7 +15,7 @@ export const MaskedInput = React.forwardRef<HTMLInputElement, MaskedInputProps>(
         mask={mask}
         {...props}
       >
-        {(inputProps: React.InputHTMLAttributes<HTMLInputElement>) => (
+        {(inputProps: any) => (
           <Input 
             {...inputProps}
             ref={ref}

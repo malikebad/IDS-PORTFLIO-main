@@ -8,6 +8,12 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
+    proxy: {
+      "/api": {
+        target: "http://localhost:5000",
+        changeOrigin: true,
+      },
+    },
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
@@ -15,4 +21,17 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  // Handle image files with uppercase extensions
+  assetsInclude: [
+    '**/*.JPG',
+    '**/*.jpg', 
+    '**/*.PNG',
+    '**/*.png',
+    '**/*.JPEG',
+    '**/*.jpeg',
+    '**/*.WEBP',
+    '**/*.webp',
+    '**/*.SVG',
+    '**/*.svg'
+  ],
 }));

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Mail, MapPin, ArrowUp, ArrowRight } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 
 const PrivacyPolicy = () => {
@@ -51,6 +52,11 @@ const PrivacyPolicy = () => {
   };
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Privacy Policy"
+        description="Learn how Inventor Design Studio collects, uses, protects, and respects your personal and business data."
+        path="/privacy-policy"
+      />
       <Navigation />
 
       {/* Hero */}

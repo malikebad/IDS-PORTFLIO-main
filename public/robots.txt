@@ -1,0 +1,51 @@
+# Robots.txt for Inventor Design Studio
+# Canonical Base: https://inventordesignstudio.io
+
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Googlebot specific directives
+User-agent: Googlebot
+Allow: /
+Allow: /assets/
+Allow: /*.js$
+Allow: /*.css$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.mp4$
+Disallow: /api/
+
+# Googlebot-Image & Googlebot-Video
+User-agent: Googlebot-Image
+Allow: /
+Allow: /assets/
+
+User-agent: Googlebot-Video
+Allow: /
+Allow: /assets/
+
+# Bingbot
+User-agent: Bingbot
+Allow: /
+Disallow: /api/
+
+# AI Crawlers & LLM Agents
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Sitemap Index
+Sitemap: https://inventordesignstudio.io/sitemap.xml

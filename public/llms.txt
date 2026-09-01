@@ -1,0 +1,36 @@
+# Inventor Design Studio (IDS)
+
+> Leading creative technology studio bridging software development, UI/UX design, visual storytelling, and video production.
+
+Website: https://inventordesignstudio.io
+Contact: info@inventerdesignstudio.com
+Phone: +92 370 4441788
+HQ: First Floor, Plaza No. 8, H, A4, Commercial Area Block H Valencia, Lahore, 54000
+
+## Core Capabilities & Services
+
+1. **Software Development & Engineering**
+   - Full-stack web platforms, SaaS architecture, React, Next.js, Node.js, TypeScript.
+   - High-throughput APIs, cloud infrastructure, containerization (Docker, Kubernetes), AWS/GCP DevOps.
+
+2. **UI/UX & Product Design**
+   - User research, wireframing, interactive prototyping in Figma, design systems, and accessible design.
+   - Mobile and responsive digital interfaces with seamless user journeys.
+
+3. **Cinematic Video Production & Motion Design**
+   - 4K commercial films, corporate brand documentaries, drone videography, VFX, and post-production color grading.
+   - High-engagement vertical video content and social media reels.
+
+4. **Branding & Visual Identity**
+   - Distinctive brand strategy, typography, iconography, and multi-channel brand guideline systems.
+
+## Key Links & Resources
+
+- Portfolio & Work: https://inventordesignstudio.io/portfolio
+- Projects Journey: https://inventordesignstudio.io/projects
+- Services Breakdown: https://inventordesignstudio.io/services
+- Studio About & Story: https://inventordesignstudio.io/about
+- Frequently Asked Questions: https://inventordesignstudio.io/faq
+- Project Consultation & Contact: https://inventordesignstudio.io/contact
+- Terms of Service: https://inventordesignstudio.io/terms-of-service
+- Privacy Policy: https://inventordesignstudio.io/privacy-policy

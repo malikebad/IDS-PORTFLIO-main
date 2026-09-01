@@ -1,7 +1,10 @@
 import { useMemo, useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
+import { getBreadcrumbSchema } from "@/lib/structuredData";
 import interiorProject from "@/assets/project-interior-1.jpg";
+import architectureProject from "@/assets/project-architecture-1.jpg";
 import brandingProject from "@/assets/project-branding-1.jpg";
 import digitalProject from "@/assets/project-digital-1.jpg";
 import { ArrowRight, Filter, Tag } from "lucide-react";
@@ -13,23 +16,23 @@ const Portfolio = () => {
   const allProjects = useMemo(() => [
     {
       id: 1,
-      title: "SaaS Dashboard Design",
-      category: "Product Design",
-      description: "User-focused dashboard design for a SaaS product with emphasis on clarity and efficiency",
+      title: "Urban Residence",
+      category: "Interior Design",
+      description: "Luxury apartment transformation with minimalist aesthetics and functional elegance",
       image: interiorProject,
       client: "Private Client",
       year: "2024",
-      tags: ["SaaS", "Dashboard", "UX"]
+      tags: ["Residential", "Minimalist", "Luxury"]
     },
     {
       id: 2,
-      title: "Enterprise Platform",
-      category: "Product Engineering",
-      description: "Scalable enterprise platform built for performance, security, and extensibility",
-  image: digitalProject,
+      title: "Modern Complex",
+      category: "Architecture",
+      description: "Contemporary commercial building featuring geometric patterns and sustainable design",
+      image: architectureProject,
       client: "Urban Development Corp",
       year: "2024",
-      tags: ["Backend", "Scalable", "Cloud"]
+      tags: ["Commercial", "Sustainable", "Modern"]
     },
     {
       id: 3,
@@ -69,6 +72,15 @@ const Portfolio = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Portfolio & Case Studies"
+        description="Explore our curated portfolio of impactful digital products, SaaS engineering, architectural visual storytelling, branding systems, and cinematic video reels."
+        path="/portfolio"
+        schema={getBreadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "Portfolio", url: "/portfolio" },
+        ])}
+      />
       <Navigation />
 
       {/* Hero Header */}
@@ -82,15 +94,15 @@ const Portfolio = () => {
         <div className="container relative mx-auto text-center animate-fade-in">
           <span className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold tracking-wider text-primary bg-primary/10 rounded-full">OUR WORK</span>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-white/80 bg-clip-text">Our Portfolio</h1>
-            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             A curated collection of our most impactful projects, showcasing innovation across
-            software, product engineering, branding, and digital experiences.
+            architecture, interior design, branding, and digital experiences.
           </p>
         </div>
       </section>
 
       {/* Filter Bar */}
-      <section className="py-6 px-4 sm:px-6 border-y border-border/30 backdrop-blur-sm sticky top-0 z-10 bg-background/80">
+      <section className="py-4 sm:py-5 px-4 sm:px-6 border-y border-border/40 backdrop-blur-xl sticky top-16 sm:top-20 z-30 bg-background/90 shadow-sm">
         <div className="container mx-auto">
           <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide">
             <Filter className="w-4 h-4 text-primary mr-1" />
@@ -170,7 +182,10 @@ const Portfolio = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <img
                     src={project.image}
-                    alt={`${project.title} - ${project.category} project showcasing ${project.tags.join(', ')} technologies by Inventor Design Studio`}
+                    alt={`${project.title} - ${project.category} project by Inventor Design Studio`}
+                    width={800}
+                    height={500}
+                    loading={index === 0 ? "eager" : "lazy"}
                     className="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>

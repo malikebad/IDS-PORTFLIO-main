@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowUp, ArrowRight } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 
 const TermsOfService = () => {
@@ -54,6 +55,11 @@ const TermsOfService = () => {
   };
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Terms of Service"
+        description="Review the terms and conditions governing client agreements, intellectual property ownership, payments, and service delivery with Inventor Design Studio."
+        path="/terms-of-service"
+      />
       <Navigation />
 
       {/* Hero */}
@@ -114,8 +120,8 @@ const TermsOfService = () => {
             <section className="min-w-0">
               <div className="prose prose-sm dark:prose-invert max-w-none space-y-8">
                 <p>
-                  Welcome to Inventor Design Studio ("Company," "we," "our," or "us"). By using our website
-                  (www.inventordesignstudio.com) and related services, you ("User," "you," or "your") agree to
+                  Welcome to Inventer Design Studio ("Company," "we," "our," or "us"). By using our website
+                  (www.inventerdesignstudio.com) and related services, you ("User," "you," or "your") agree to
                   the following Terms of Service. If you do not agree with these terms, do not use our services.
                 </p>
 
