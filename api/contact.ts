@@ -5,7 +5,7 @@ import {
   getClientConfirmationHtml,
   isRateLimited,
   sanitize,
-} from "./_lib/nodemailer";
+} from "./_lib/nodemailer.js";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Handle preflight CORS
