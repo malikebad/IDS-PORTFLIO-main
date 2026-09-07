@@ -326,7 +326,7 @@ const Contact = () => {
                 allowFullScreen={true}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="INVENTER Design Studio Location"
+                title="Inventor Design Studio Location"
               />
             </div>
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/90 to-transparent p-4 sm:p-6 backdrop-blur-sm">

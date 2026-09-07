@@ -48,7 +48,7 @@ const About = () => {
       <h2 className="text-3xl sm:text-4xl font-bold mb-6">Our Story</h2>
       <div className="space-y-4 sm:space-y-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
         <p>
-          Founded in 2018, Inventer Design Studio emerged from a shared vision: to create
+          Founded in 2018, Inventor Design Studio emerged from a shared vision: to create
           design solutions that transcend trends and stand the test of time. What began as a
           small collective of architects and designers has evolved into a full-service design
           studio.
@@ -80,7 +80,7 @@ const About = () => {
       <h2 className="text-3xl sm:text-4xl font-bold mb-6">Our Mission</h2>
       <div className="space-y-4 sm:space-y-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
         <p>
-          At Inventer Design Studio, our mission is to create meaningful design solutions that elevate human experiences, inspire connection, and drive positive change in the world.
+          At Inventor Design Studio, our mission is to create meaningful design solutions that elevate human experiences, inspire connection, and drive positive change in the world.
         </p>
         <p>
           We strive to push the boundaries of what's possible, combining innovative thinking with technical excellence to deliver work that not only meets our clients' needs but exceeds their expectations.
@@ -162,7 +162,7 @@ const About = () => {
           <span className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold tracking-wider text-primary bg-primary/10 rounded-full">ABOUT US</span>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-white/80 bg-clip-text">We Design Experiences That Shape Tomorrow</h1>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Inventer Design Studio is a collective of creative minds dedicated to crafting spaces,
+            Inventor Design Studio is a collective of creative minds dedicated to crafting spaces,
             brands, and digital experiences that inspire and endure.
           </p>
         </div>
@@ -175,7 +175,7 @@ const About = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
             <img
               src={studioImage}
-              alt="Inventer Design Studio"
+              alt="Inventor Design Studio"
               className="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] object-cover transition-transform duration-700 group-hover:scale-105"
             />
             <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 md:p-10 z-20">
@@ -219,7 +219,7 @@ const About = () => {
                 </div>
                 <div className="space-y-4 text-base sm:text-lg text-muted-foreground leading-relaxed">
                   <p>
-                    Saad Malik founded IDS (Inventer Design Studio) with a vision to transform ideas into powerful visual experiences through filmmaking, video generation, content creation, and creative direction. With a strong understanding of visual storytelling and digital media, he leads the studio in creating work that connects creativity with purpose.
+                    Saad Malik founded IDS (Inventor Design Studio) with a vision to transform ideas into powerful visual experiences through filmmaking, video generation, content creation, and creative direction. With a strong understanding of visual storytelling and digital media, he leads the studio in creating work that connects creativity with purpose.
                   </p>
                   <p>
                     As a filmmaker, director, and visual storyteller, Saad oversees the creative process from concept and production to final execution — bringing together cinematic direction, innovative content, and meticulous attention to detail.

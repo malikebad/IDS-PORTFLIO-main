@@ -120,7 +120,7 @@ const TermsOfService = () => {
             <section className="min-w-0">
               <div className="prose prose-sm dark:prose-invert max-w-none space-y-8">
                 <p>
-                  Welcome to Inventer Design Studio ("Company," "we," "our," or "us"). By using our website
+                  Welcome to Inventor Design Studio ("Company," "we," "our," or "us"). By using our website
                   (www.inventerdesignstudio.com) and related services, you ("User," "you," or "your") agree to
                   the following Terms of Service. If you do not agree with these terms, do not use our services.
                 </p>
@@ -210,7 +210,7 @@ const TermsOfService = () => {
 
             <h2 className="text-lg font-semibold">Indemnification</h2>
             <p>
-              You agree to indemnify, defend, and hold harmless Inventer Design Studio and its employees,
+              You agree to indemnify, defend, and hold harmless Inventor Design Studio and its employees,
               officers, and partners from any claims, liabilities, damages, or expenses arising from your use
               of our services or breach of these Terms.
             </p>

@@ -109,7 +109,7 @@ const Footer = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 src={logo} 
-                alt="INVENTER Design Studio" 
+                alt="Inventor Design Studio" 
                 className="h-12 sm:h-14 md:h-16 rounded-lg"
               />
               <div>
@@ -117,7 +117,7 @@ const Footer = () => {
                   Creative Technology Studio
                 </span>
                 <h3 className="font-bold text-base sm:text-lg text-foreground">
-                  Software Development &amp; Video Production
+                  Inventor Design Studio
                 </h3>
               </div>
             </div>
@@ -326,7 +326,7 @@ const Footer = () => {
         <div className="border-t border-border mt-8 sm:mt-10 md:mt-12 lg:mt-16 pt-6 sm:pt-8">
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-center">
             <p className="text-xs sm:text-sm text-muted-foreground text-center sm:text-left">
-              © {new Date().getFullYear()} INVENTER Design Studio. All rights reserved.
+              © {new Date().getFullYear()} Inventor Design Studio. All rights reserved.
               <span className="hidden sm:inline-flex items-center text-xs text-muted-foreground/70 ml-2">
                 Made with <Heart size={12} className="mx-1 text-red-500 fill-red-500" /> in Lahore
               </span>
