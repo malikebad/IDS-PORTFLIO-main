@@ -5,8 +5,8 @@ import SEO from "@/components/SEO";
 import { getBreadcrumbSchema } from "@/lib/structuredData";
 import interiorProject from "@/assets/project-interior-1.jpg";
 import architectureProject from "@/assets/project-architecture-1.jpg";
-import brandingProject from "@/assets/project-branding-1.jpg";
-import digitalProject from "@/assets/project-digital-1.jpg";
+import brandingProject from "@/assets/BrandingIdentity.png";
+import digitalProject from "@/assets/UIUXProductDesign.png";
 import { ArrowRight, Filter, Tag } from "lucide-react";
 
 const Portfolio = () => {

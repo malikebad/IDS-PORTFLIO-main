@@ -5,7 +5,9 @@ import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { getBreadcrumbSchema } from "@/lib/structuredData";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
-import studioImage from "@/assets/about-studio.jpg";
+import studioImage from "@/assets/about-studio.png";
+import saadmalik from "@/assets/saadmalik.png";
+import ebadmalik from "@/assets/ebadmalik.png";
 
 const About = () => {
   const [activeTab, setActiveTab] = useState("story");
@@ -180,6 +182,74 @@ const About = () => {
               <div className="bg-background/30 backdrop-blur-md p-6 sm:p-8 rounded-2xl border border-primary/20 shadow-xl max-w-2xl mx-auto transform translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                 <h3 className="text-2xl sm:text-3xl font-bold mb-2">Our Creative Space</h3>
                 <p className="text-muted-foreground">Where innovation meets design excellence, our studio is the birthplace of transformative ideas.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Leadership / CEO Section */}
+      <section className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-background" />
+        <div className="absolute inset-0 bg-[linear-gradient(45deg,#ffffff05_1px,transparent_1px),linear-gradient(135deg,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px]" />
+
+        <div className="container relative mx-auto max-w-6xl">
+          <div className="text-center mb-12 sm:mb-16 animate-fade-in">
+            <span className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold tracking-wider text-primary bg-primary/10 rounded-full">OUR LEADERSHIP</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Meet Our Leaders</h2>
+            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+              The visionaries guiding our studio with creativity, craft, and an unwavering pursuit of design excellence.
+            </p>
+          </div>
+
+          <div className="space-y-10 sm:space-y-14">
+            {/* CEO Profile 1 */}
+            <div className="group flex flex-col lg:flex-row gap-8 lg:gap-12 items-center rounded-2xl border border-primary/10 bg-card/50 backdrop-blur-sm p-6 sm:p-8 lg:p-10 shadow-lg hover:border-primary/20 hover:shadow-primary/5 transition-all duration-300 animate-slide-up">
+              <div className="w-full lg:w-72 xl:w-80 shrink-0 overflow-hidden rounded-xl">
+                <img
+                  src={saadmalik}
+                  alt="Saad Malik, Founder & Creative Director"
+                  className="w-full h-64 sm:h-72 lg:h-80 object-cover rounded-xl transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
+              <div className="space-y-4 text-center lg:text-left flex-1">
+                <div>
+                  <h3 className="text-2xl sm:text-3xl font-bold">Saad Malik</h3>
+                  <p className="text-sm sm:text-base font-semibold text-primary mt-1.5">Founder & Creative Director</p>
+                </div>
+                <div className="space-y-4 text-base sm:text-lg text-muted-foreground leading-relaxed">
+                  <p>
+                    Saad Malik founded IDS (Inventer Design Studio) with a vision to transform ideas into powerful visual experiences through filmmaking, video generation, content creation, and creative direction. With a strong understanding of visual storytelling and digital media, he leads the studio in creating work that connects creativity with purpose.
+                  </p>
+                  <p>
+                    As a filmmaker, director, and visual storyteller, Saad oversees the creative process from concept and production to final execution — bringing together cinematic direction, innovative content, and meticulous attention to detail.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* CEO Profile 2 */}
+            <div className="group flex flex-col lg:flex-row-reverse gap-8 lg:gap-12 items-center rounded-2xl border border-primary/10 bg-card/50 backdrop-blur-sm p-6 sm:p-8 lg:p-10 shadow-lg hover:border-primary/20 hover:shadow-primary/5 transition-all duration-300 animate-slide-up">
+              <div className="w-full lg:w-72 xl:w-80 shrink-0 overflow-hidden rounded-xl">
+                <img
+                  src={ebadmalik}
+                  alt="Ebad Malik Co-Founder, Co-CEO, Software Engineer, AI Engineer & Head of Marketing"
+                  className="w-full h-64 sm:h-72 lg:h-80 object-cover rounded-xl transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
+              <div className="space-y-4 text-center lg:text-left flex-1">
+                <div>
+                  <h3 className="text-2xl sm:text-3xl font-bold">Ebad Malik</h3>
+                  <p className="text-sm sm:text-base font-semibold text-primary mt-1.5">Co-Founder, CEO, Software Engineer, AI Engineer & Head of Marketing</p>
+                </div>
+                <div className="space-y-4 text-base sm:text-lg text-muted-foreground leading-relaxed">
+                  <p>
+                    Ebad Malik brings together a strong foundation in software engineering, artificial intelligence, and creative problem-solving. As a Software Engineer, AI Engineer, and AI Prompt Engineer, he focuses on building intelligent digital solutions that combine technology, innovation, and practical impact.
+                  </p>
+                  <p>
+                    As the Co-Founder and Co-CEO of IDS (Inventor Design Studio), Ebad plays a key role in shaping the company’s vision, technology, and growth. Alongside his technical leadership, he heads the Marketing team, driving the brand’s strategy, digital presence, and creative direction.
+                  </p>
+                </div>
               </div>
             </div>
           </div>

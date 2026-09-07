@@ -13,7 +13,7 @@ import BrandingIdentity from '../assets/BrandingIdentity.png';
 import SocialMediaContent from '../assets/SocialMediaContent.png';
 import UIUXProductDesign from '../assets/UIUXProductDesign.png';
 import Visualization3DRendering from '../assets/Visualization3DRendering.png';
-import WebDevelopmentDesign from '../assets/WebDevelopmentDesign.png';
+import webdevelopment from '../assets/webdevelopment.png';
 import shippingfullfilment from '../assets/shippingfullfilment.jpg';
 import publicshop from '../assets/publicshop.jpg';
 import poseai from '../assets/poseai.jpg';
@@ -751,9 +751,9 @@ const Projects = () => {
   // ============================================================
   
   const webDevImages = [
-    WebDevelopmentDesign,
-    WebDevelopmentDesign,
-    WebDevelopmentDesign,
+    webdevelopment,
+    webdevelopment,
+    webdevelopment,
   ];
 
   const architectureImages = [

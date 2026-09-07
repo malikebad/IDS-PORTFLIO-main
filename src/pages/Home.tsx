@@ -6,10 +6,11 @@ import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { trackEvent } from "@/lib/analytics";
 import heroImage from "@/assets/hero-architecture.jpg";
-import interiorProject from "@/assets/project-interior-1.jpg";
 import architectureProject from "@/assets/project-architecture-1.jpg";
-import brandingProject from "@/assets/project-branding-1.jpg";
-import digitalProject from "@/assets/project-digital-1.jpg";
+import brand from "@/assets/brand.mp4";
+import interiorProject from "@/assets/poseai.jpg";
+import brandingProject from "@/assets/SocialMediaContent.png";
+import digitalProject from "@/assets/publicshop.jpg";
 import idsLogo from "@/assets/ids-logo.png";
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
@@ -73,7 +74,7 @@ const Home = () => {
       tags: ["Next.js", "Node.js", "SaaS"]
     },
     {
-      id: 2,
+id: 2,
       title: "AI Analytics Dashboard",
       category: "Product Engineering",
       image: interiorProject,
@@ -84,6 +85,7 @@ const Home = () => {
       title: "Cinematic Brand Film",
       category: "Video Production",
       image: architectureProject,
+      video: brand,
       tags: ["4K", "Drone", "VFX"]
     },
     {
@@ -468,15 +470,27 @@ const Home = () => {
                     transition: 'transform 200ms ease-out'
                   }}
                 >
-                  {/* Image with parallax-like zoom */}
+                  {/* Video or Image with parallax-like zoom */}
                   <div className="absolute inset-0 overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-125"
-                    />
+                    {"video" in project && project.video ? (
+                      <video
+                        src={project.video}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        preload="auto"
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-125"
+                      />
+                    )}
                     {/* Animated overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent group-hover:via-black/60 transition-all duration-700" />
                     

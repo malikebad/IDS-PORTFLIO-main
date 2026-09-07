@@ -10,7 +10,7 @@ import BrandingIdentity from '../assets/BrandingIdentity.png';
 import SocialMediaContent from '../assets/SocialMediaContent.png';
 import UIUXProductDesign from '../assets/UIUXProductDesign.png';
 import Visualization3DRendering from '../assets/Visualization3DRendering.png';
-import WebDevelopmentDesign from '../assets/WebDevelopmentDesign.png';
+import webdevelopment from '../assets/webdevelopment.png';
 
 // ✅ IMPORT REAL PROJECT IMAGES
 import shippingfullfilment from '../assets/shippingfullfilment.jpg';
@@ -527,7 +527,7 @@ const caseStudies = {
         description: "Successfully deployed the platform with 24/7 monitoring and ongoing support for continuous improvement."
       }
     ],
-    image: WebDevelopmentDesign,
+    image: webdevelopment,
   },
 
   // 2. Branding & Identity
@@ -755,7 +755,7 @@ const caseStudies = {
         description: "Delivered comprehensive design files and style guides for development."
       }
     ],
-    image: WebDevelopmentDesign,
+    image: webdevelopment,
   },
 
   // 8. Architecture & Interior (Office Design)
