@@ -19,7 +19,7 @@ const About = () => {
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
-  
+
   const values = useMemo(() => [
     {
       icon: Lightbulb,
@@ -157,7 +157,7 @@ const About = () => {
           <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
         </div>
-        
+
         <div className="container relative mx-auto text-center animate-fade-in">
           <span className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold tracking-wider text-primary bg-primary/10 rounded-full">ABOUT US</span>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-white/80 bg-clip-text">We Design Experiences That Shape Tomorrow</h1>
@@ -233,21 +233,21 @@ const About = () => {
               <div className="w-full lg:w-72 xl:w-80 shrink-0 overflow-hidden rounded-xl">
                 <img
                   src={ebadmalik}
-                  alt="Ebad Malik Co-Founder, Co-CEO, Software Engineer, AI Engineer & Head of Marketing"
+                  alt="Ebad Furqan Co-Founder, Co-CEO, Software Engineer, AI Engineer & Head of Marketing"
                   className="w-full h-64 sm:h-72 lg:h-80 object-cover rounded-xl transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
               <div className="space-y-4 text-center lg:text-left flex-1">
                 <div>
-                  <h3 className="text-2xl sm:text-3xl font-bold">Ebad Malik</h3>
+                  <h3 className="text-2xl sm:text-3xl font-bold">Ebad Furqan</h3>
                   <p className="text-sm sm:text-base font-semibold text-primary mt-1.5">Co-Founder, CEO, Software Engineer, AI Engineer & Head of Marketing</p>
                 </div>
                 <div className="space-y-4 text-base sm:text-lg text-muted-foreground leading-relaxed">
                   <p>
-                    Ebad Malik brings together a strong foundation in software engineering, artificial intelligence, and creative problem-solving. As a Software Engineer, AI Engineer, and AI Prompt Engineer, he focuses on building intelligent digital solutions that combine technology, innovation, and practical impact.
+                    Ebad Furqan brings together a strong foundation in software engineering, artificial intelligence, and creative problem-solving. As a Software Engineer, AI Engineer, and AI Prompt Engineer, he focuses on building intelligent digital solutions that combine technology, innovation, and practical impact.
                   </p>
                   <p>
-                    As the Co-Founder and Co-CEO of IDS (Inventor Design Studio), Ebad plays a key role in shaping the company’s vision, technology, and growth. Alongside his technical leadership, he heads the Marketing team, driving the brand’s strategy, digital presence, and creative direction.
+                    As the Co-Founder and Co-CEO of IDS (Inventor Design Studio), Ebad Furqan plays a key role in shaping the company’s vision, technology, and growth. Alongside his technical leadership, he heads the Marketing team, driving the brand’s strategy, digital presence, and creative direction.
                   </p>
                 </div>
               </div>
@@ -260,39 +260,36 @@ const About = () => {
       <section className="py-16 sm:py-20 md:py-24 px-4 sm:px-6">
         <div className="container mx-auto max-w-5xl">
           <div className="hidden md:flex flex-wrap border-b border-border/30 mb-8">
-            <button 
+            <button
               onClick={() => setActiveTab("story")}
-              className={`px-6 py-3 text-sm font-medium transition-all relative ${
-                activeTab === "story" 
-                  ? "text-primary" 
+              className={`px-6 py-3 text-sm font-medium transition-all relative ${activeTab === "story"
+                  ? "text-primary"
                   : "text-muted-foreground hover:text-primary"
-              }`}
+                }`}
             >
               Our Story
               {activeTab === "story" && (
                 <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary" />
               )}
             </button>
-            <button 
+            <button
               onClick={() => setActiveTab("mission")}
-              className={`px-6 py-3 text-sm font-medium transition-all relative ${
-                activeTab === "mission" 
-                  ? "text-primary" 
+              className={`px-6 py-3 text-sm font-medium transition-all relative ${activeTab === "mission"
+                  ? "text-primary"
                   : "text-muted-foreground hover:text-primary"
-              }`}
+                }`}
             >
               Our Mission
               {activeTab === "mission" && (
                 <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary" />
               )}
             </button>
-            <button 
+            <button
               onClick={() => setActiveTab("approach")}
-              className={`px-6 py-3 text-sm font-medium transition-all relative ${
-                activeTab === "approach" 
-                  ? "text-primary" 
+              className={`px-6 py-3 text-sm font-medium transition-all relative ${activeTab === "approach"
+                  ? "text-primary"
                   : "text-muted-foreground hover:text-primary"
-              }`}
+                }`}
             >
               Our Approach
               {activeTab === "approach" && (
@@ -331,7 +328,7 @@ const About = () => {
       <section className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-background" />
         <div className="absolute inset-0 bg-[linear-gradient(45deg,#ffffff05_1px,transparent_1px),linear-gradient(135deg,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px]" />
-        
+
         <div className="container relative mx-auto max-w-5xl">
           <div className="text-center mb-12 sm:mb-16 animate-fade-in">
             <span className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold tracking-wider text-primary bg-primary/10 rounded-full">WHO WE ARE</span>
@@ -340,7 +337,7 @@ const About = () => {
               Delivering cutting-edge solutions since 2024 with unmatched expertise and innovation
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             <div className="group flex flex-col p-6 sm:p-8 bg-card/50 backdrop-blur-sm rounded-2xl border border-primary/10 shadow-lg hover:shadow-primary/5 hover:border-primary/20 transition-all duration-300 animate-slide-up">
               <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-300">
@@ -367,7 +364,7 @@ const About = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="group flex flex-col p-6 sm:p-8 bg-card/50 backdrop-blur-sm rounded-2xl border border-primary/10 shadow-lg hover:shadow-primary/5 hover:border-primary/20 transition-all duration-300 animate-slide-up">
               <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-300">
                 <Calendar className="w-6 h-6 text-primary" />
@@ -393,7 +390,7 @@ const About = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="group flex flex-col p-6 sm:p-8 bg-card/50 backdrop-blur-sm rounded-2xl border border-primary/10 shadow-lg hover:shadow-primary/5 hover:border-primary/20 transition-all duration-300 animate-slide-up">
               <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-300">
                 <Briefcase className="w-6 h-6 text-primary" />
@@ -463,7 +460,7 @@ const About = () => {
       <section className="py-24 sm:py-32 px-6 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/5" />
         <div className="absolute inset-0 bg-[linear-gradient(45deg,#ffffff08_1px,transparent_1px),linear-gradient(135deg,#ffffff08_1px,transparent_1px)] bg-[size:40px_40px]" />
-        
+
         <div className="container relative mx-auto text-center">
           <div className="max-w-3xl mx-auto bg-background/30 backdrop-blur-md p-8 sm:p-12 rounded-3xl border border-primary/20 shadow-xl">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-primary-foreground bg-clip-text text-transparent">Let's Build Something Extraordinary</h2>
