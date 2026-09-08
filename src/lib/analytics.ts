@@ -8,11 +8,13 @@ declare global {
 }
 
 export const initGA = () => {
-  const measurementId = import.meta.env.VITE_GA_MEASUREMENT_ID;
-  if (!measurementId || typeof window === "undefined") return;
+  if (typeof window === "undefined") return;
 
-  // Prevent multiple script insertions
-  if (document.getElementById("ga-script")) return;
+  // Already initialized via HTML script tag or previous call
+  if (window.gtag || document.getElementById("ga-script")) return;
+
+  const measurementId = import.meta.env.VITE_GA_MEASUREMENT_ID || "G-7L3KQ8B1HQ";
+  if (!measurementId) return;
 
   const script = document.createElement("script");
   script.id = "ga-script";
@@ -31,8 +33,7 @@ export const initGA = () => {
 };
 
 export const trackPageView = (url: string, title?: string) => {
-  const measurementId = import.meta.env.VITE_GA_MEASUREMENT_ID;
-  if (!measurementId || typeof window === "undefined" || !window.gtag) return;
+  if (typeof window === "undefined" || !window.gtag) return;
 
   window.gtag("event", "page_view", {
     page_path: url,
