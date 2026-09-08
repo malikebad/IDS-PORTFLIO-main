@@ -37,7 +37,7 @@ const PrivacyPolicy = () => {
         }
         return false;
       });
-      
+
       if (currentSection) {
         setActiveSection(currentSection.id);
       }
@@ -91,11 +91,10 @@ const PrivacyPolicy = () => {
                       <a
                         key={section.id}
                         href={`#${section.id}`}
-                        className={`block px-3 py-2 text-sm rounded-lg transition-colors ${
-                          activeSection === section.id
+                        className={`block px-3 py-2 text-sm rounded-lg transition-colors ${activeSection === section.id
                             ? "bg-primary text-primary-foreground"
                             : "text-muted-foreground hover:bg-primary/10"
-                        }`}
+                          }`}
                       >
                         {section.title}
                       </a>
@@ -141,144 +140,144 @@ const PrivacyPolicy = () => {
                   This Privacy Policy explains how we collect, use, and safeguard your data.
                 </p>
 
-            <div id="collection" className="scroll-mt-24 space-y-4">
-              <h2 className="text-2xl font-semibold group">
-                <span className="inline-block transition-transform group-hover:translate-x-1">Information We Collect</span>
-              </h2>
-              <ul className="grid sm:grid-cols-2 gap-4 pl-5 list-disc marker:text-primary">
-                <li className="space-y-1">
-                  <strong>Personal Information</strong>
-                  <p className="text-muted-foreground">Name, email address, phone number, company name, billing details.</p>
-                </li>
-                <li className="space-y-1">
-                  <strong>Technical Information</strong>
-                  <p className="text-muted-foreground">IP address, browser type, operating system, device details, cookies, and analytics data.</p>
-                </li>
-                <li className="space-y-1">
-                  <strong>Usage Data</strong>
-                  <p className="text-muted-foreground">How you interact with our website and services.</p>
-                </li>
-                <li className="space-y-1">
-                  <strong>Client Project Data</strong>
-                  <p className="text-muted-foreground">Files, documents, or materials you provide for project completion.</p>
-                </li>
-              </ul>
-            </div>
-
-            <div id="usage" className="scroll-mt-24 space-y-4">
-              <h2 className="text-2xl font-semibold group">
-                <span className="inline-block transition-transform group-hover:translate-x-1">How We Use Your Information</span>
-              </h2>
-              <p className="text-muted-foreground">
-                We use the collected data to deliver and improve our services, communicate with you regarding inquiries,
-                contracts, and updates, process payments and invoices, send marketing or promotional material (with your consent),
-                and ensure compliance with legal and security requirements.
-              </p>
-            </div>
-
-            <div id="sharing" className="scroll-mt-24 space-y-4">
-              <h2 className="text-2xl font-semibold group">
-                <span className="inline-block transition-transform group-hover:translate-x-1">Sharing of Information</span>
-              </h2>
-              <p className="text-muted-foreground">
-                We do not sell or rent your personal data. We may share information with trusted third-party vendors (for example,
-                hosting, payment processors, and cloud storage), legal authorities if required by law or court order, and in connection
-                with business transfers such as a merger, acquisition, or sale of assets.
-              </p>
-            </div>
-
-            <div id="security" className="scroll-mt-24 space-y-4">
-              <h2 className="text-2xl font-semibold group">
-                <span className="inline-block transition-transform group-hover:translate-x-1">Data Security</span>
-              </h2>
-              <p className="text-muted-foreground">
-                We use industry-standard measures (encryption, firewalls, secure servers) to protect your information. However, no system
-                is 100% secure, and we cannot guarantee absolute security.
-              </p>
-            </div>
-
-            <div id="cookies" className="scroll-mt-24 space-y-4">
-              <h2 className="text-2xl font-semibold group">
-                <span className="inline-block transition-transform group-hover:translate-x-1">Cookies &amp; Tracking Technologies</span>
-              </h2>
-              <p className="text-muted-foreground">
-                Our website uses cookies and similar technologies to improve user experience, analyze traffic, and personalize content. You
-                can disable cookies in your browser settings, but some site features may not function properly.
-              </p>
-            </div>
-
-            <div id="rights" className="scroll-mt-24 space-y-4">
-              <h2 className="text-2xl font-semibold group">
-                <span className="inline-block transition-transform group-hover:translate-x-1">Your Rights</span>
-              </h2>
-              <p className="text-muted-foreground">
-                Depending on your location, you may have rights to access, correct, or delete your personal data, withdraw consent for
-                marketing communications, request a copy of the data we hold about you, or file a complaint with your local data protection
-                authority. To exercise these rights, contact us at <a className="text-primary hover:underline" href="mailto:info@inventordesignstudio.com">info@inventordesignstudio.com</a>.
-              </p>
-            </div>
-
-            <div id="retention" className="scroll-mt-24 space-y-4">
-              <h2 className="text-2xl font-semibold group">
-                <span className="inline-block transition-transform group-hover:translate-x-1">Data Retention</span>
-              </h2>
-              <p className="text-muted-foreground">
-                We retain your data only as long as necessary to provide our services, comply with legal obligations, and resolve disputes.
-              </p>
-            </div>
-
-            <div id="international" className="scroll-mt-24 space-y-4">
-              <h2 className="text-2xl font-semibold group">
-                <span className="inline-block transition-transform group-hover:translate-x-1">International Data Transfers</span>
-              </h2>
-              <p className="text-muted-foreground">
-                If you access our services from outside Pakistan, your data may be transferred to servers located in other countries with different
-                data protection laws.
-              </p>
-            </div>
-
-            <div id="children" className="scroll-mt-24 space-y-4">
-              <h2 className="text-2xl font-semibold group">
-                <span className="inline-block transition-transform group-hover:translate-x-1">Children's Privacy</span>
-              </h2>
-              <p className="text-muted-foreground">
-                Our services are not directed to children under 13. We do not knowingly collect personal data from children.
-              </p>
-            </div>
-
-            <div id="changes" className="scroll-mt-24 space-y-4">
-              <h2 className="text-2xl font-semibold group">
-                <span className="inline-block transition-transform group-hover:translate-x-1">Changes to Privacy Policy</span>
-              </h2>
-              <p className="text-muted-foreground">
-                We may update this Privacy Policy at any time. Updates will be posted on this page with the "Last Updated" date.
-              </p>
-            </div>
-
-            <div id="contact" className="scroll-mt-24 space-y-4">
-              <h2 className="text-2xl font-semibold group">
-                <span className="inline-block transition-transform group-hover:translate-x-1">Contact Us</span>
-              </h2>
-              <p className="text-muted-foreground mb-4">
-                If you have questions about this Privacy Policy or our data practices, please contact us:
-              </p>
-              <div className="space-y-4">
-                <div className="flex items-center gap-3 p-4 rounded-lg bg-card/50 border border-border/50">
-                  <Mail className="w-5 h-5 text-primary shrink-0" />
-                  <a href="mailto:info@inventordesignstudio.com" className="text-muted-foreground hover:text-primary transition-colors">
-                    info@inventordesignstudio.com
-                  </a>
+                <div id="collection" className="scroll-mt-24 space-y-4">
+                  <h2 className="text-2xl font-semibold group">
+                    <span className="inline-block transition-transform group-hover:translate-x-1">Information We Collect</span>
+                  </h2>
+                  <ul className="grid sm:grid-cols-2 gap-4 pl-5 list-disc marker:text-primary">
+                    <li className="space-y-1">
+                      <strong>Personal Information</strong>
+                      <p className="text-muted-foreground">Name, email address, phone number, company name, billing details.</p>
+                    </li>
+                    <li className="space-y-1">
+                      <strong>Technical Information</strong>
+                      <p className="text-muted-foreground">IP address, browser type, operating system, device details, cookies, and analytics data.</p>
+                    </li>
+                    <li className="space-y-1">
+                      <strong>Usage Data</strong>
+                      <p className="text-muted-foreground">How you interact with our website and services.</p>
+                    </li>
+                    <li className="space-y-1">
+                      <strong>Client Project Data</strong>
+                      <p className="text-muted-foreground">Files, documents, or materials you provide for project completion.</p>
+                    </li>
+                  </ul>
                 </div>
-                <div className="flex items-start gap-3 p-4 rounded-lg bg-card/50 border border-border/50">
-                  <MapPin className="w-5 h-5 text-primary shrink-0 mt-1" />
+
+                <div id="usage" className="scroll-mt-24 space-y-4">
+                  <h2 className="text-2xl font-semibold group">
+                    <span className="inline-block transition-transform group-hover:translate-x-1">How We Use Your Information</span>
+                  </h2>
                   <p className="text-muted-foreground">
-                    First Floor, Plaza No. 8, H, A4,<br />
-                    Commercial Area Block H Valencia,<br />
-                    Lahore, 54000
+                    We use the collected data to deliver and improve our services, communicate with you regarding inquiries,
+                    contracts, and updates, process payments and invoices, send marketing or promotional material (with your consent),
+                    and ensure compliance with legal and security requirements.
                   </p>
                 </div>
-              </div>
-            </div>
+
+                <div id="sharing" className="scroll-mt-24 space-y-4">
+                  <h2 className="text-2xl font-semibold group">
+                    <span className="inline-block transition-transform group-hover:translate-x-1">Sharing of Information</span>
+                  </h2>
+                  <p className="text-muted-foreground">
+                    We do not sell or rent your personal data. We may share information with trusted third-party vendors (for example,
+                    hosting, payment processors, and cloud storage), legal authorities if required by law or court order, and in connection
+                    with business transfers such as a merger, acquisition, or sale of assets.
+                  </p>
+                </div>
+
+                <div id="security" className="scroll-mt-24 space-y-4">
+                  <h2 className="text-2xl font-semibold group">
+                    <span className="inline-block transition-transform group-hover:translate-x-1">Data Security</span>
+                  </h2>
+                  <p className="text-muted-foreground">
+                    We use industry-standard measures (encryption, firewalls, secure servers) to protect your information. However, no system
+                    is 100% secure, and we cannot guarantee absolute security.
+                  </p>
+                </div>
+
+                <div id="cookies" className="scroll-mt-24 space-y-4">
+                  <h2 className="text-2xl font-semibold group">
+                    <span className="inline-block transition-transform group-hover:translate-x-1">Cookies &amp; Tracking Technologies</span>
+                  </h2>
+                  <p className="text-muted-foreground">
+                    Our website uses cookies and similar technologies to improve user experience, analyze traffic, and personalize content. You
+                    can disable cookies in your browser settings, but some site features may not function properly.
+                  </p>
+                </div>
+
+                <div id="rights" className="scroll-mt-24 space-y-4">
+                  <h2 className="text-2xl font-semibold group">
+                    <span className="inline-block transition-transform group-hover:translate-x-1">Your Rights</span>
+                  </h2>
+                  <p className="text-muted-foreground">
+                    Depending on your location, you may have rights to access, correct, or delete your personal data, withdraw consent for
+                    marketing communications, request a copy of the data we hold about you, or file a complaint with your local data protection
+                    authority. To exercise these rights, contact us at <a className="text-primary hover:underline" href="mailto:info@inventordesignstudio.com">info@inventordesignstudio.com</a>.
+                  </p>
+                </div>
+
+                <div id="retention" className="scroll-mt-24 space-y-4">
+                  <h2 className="text-2xl font-semibold group">
+                    <span className="inline-block transition-transform group-hover:translate-x-1">Data Retention</span>
+                  </h2>
+                  <p className="text-muted-foreground">
+                    We retain your data only as long as necessary to provide our services, comply with legal obligations, and resolve disputes.
+                  </p>
+                </div>
+
+                <div id="international" className="scroll-mt-24 space-y-4">
+                  <h2 className="text-2xl font-semibold group">
+                    <span className="inline-block transition-transform group-hover:translate-x-1">International Data Transfers</span>
+                  </h2>
+                  <p className="text-muted-foreground">
+                    If you access our services from outside Pakistan, your data may be transferred to servers located in other countries with different
+                    data protection laws.
+                  </p>
+                </div>
+
+                <div id="children" className="scroll-mt-24 space-y-4">
+                  <h2 className="text-2xl font-semibold group">
+                    <span className="inline-block transition-transform group-hover:translate-x-1">Children's Privacy</span>
+                  </h2>
+                  <p className="text-muted-foreground">
+                    Our services are not directed to children under 13. We do not knowingly collect personal data from children.
+                  </p>
+                </div>
+
+                <div id="changes" className="scroll-mt-24 space-y-4">
+                  <h2 className="text-2xl font-semibold group">
+                    <span className="inline-block transition-transform group-hover:translate-x-1">Changes to Privacy Policy</span>
+                  </h2>
+                  <p className="text-muted-foreground">
+                    We may update this Privacy Policy at any time. Updates will be posted on this page with the "Last Updated" date.
+                  </p>
+                </div>
+
+                <div id="contact" className="scroll-mt-24 space-y-4">
+                  <h2 className="text-2xl font-semibold group">
+                    <span className="inline-block transition-transform group-hover:translate-x-1">Contact Us</span>
+                  </h2>
+                  <p className="text-muted-foreground mb-4">
+                    If you have questions about this Privacy Policy or our data practices, please contact us:
+                  </p>
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-3 p-4 rounded-lg bg-card/50 border border-border/50">
+                      <Mail className="w-5 h-5 text-primary shrink-0" />
+                      <a href="mailto:info@inventordesignstudio.com" className="text-muted-foreground hover:text-primary transition-colors">
+                        info@inventordesignstudio.com
+                      </a>
+                    </div>
+                    <div className="flex items-start gap-3 p-4 rounded-lg bg-card/50 border border-border/50">
+                      <MapPin className="w-5 h-5 text-primary shrink-0 mt-1" />
+                      <p className="text-muted-foreground">
+                        First Floor, Plaza No. 8, H, A4,<br />
+                        Commercial Area Block H Valencia,<br />
+                        Lahore, 54000
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </section>
           </div>
@@ -288,9 +287,8 @@ const PrivacyPolicy = () => {
         <button
           onClick={scrollToTop}
           aria-label="Scroll to top"
-          className={`fixed right-4 bottom-4 p-3 rounded-full bg-primary text-primary-foreground shadow-lg transition-all duration-300 ${
-            showScrollTop ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8 pointer-events-none"
-          }`}
+          className={`fixed right-4 bottom-4 p-3 rounded-full bg-primary text-primary-foreground shadow-lg transition-all duration-300 ${showScrollTop ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8 pointer-events-none"
+            }`}
         >
           <ArrowUp className="w-5 h-5" />
         </button>
