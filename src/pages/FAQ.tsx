@@ -143,8 +143,8 @@ const FAQ = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Frequently Asked Questions"
-        description="Find answers to common questions about Inventor Design Studio services, engineering process, project timelines, deliverables, pricing, and ongoing support."
+        title="FAQ &amp; Knowledgebase"
+        description="Frequently asked questions about Inventor Design Studio: engineering process, project timelines, deliverables, pricing, and support."
         path="/faq"
         schema={faqSchema}
       />

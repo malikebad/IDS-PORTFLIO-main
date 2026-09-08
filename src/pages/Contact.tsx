@@ -83,8 +83,8 @@ const Contact = () => {
     <ErrorBoundary>
       <div className="min-h-screen bg-background">
         <SEO
-          title="Contact Us & Project Consultation"
-          description="Ready to build something extraordinary? Get in touch with Inventor Design Studio for project scoping, software engineering, and video production consultations."
+          title="Contact Us"
+          description="Contact Inventor Design Studio for software development, UI/UX design, and video production consultations and project quotes."
           path="/contact"
           schema={getBreadcrumbSchema([
             { name: "Home", url: "/" },

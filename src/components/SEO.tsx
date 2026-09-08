@@ -14,15 +14,28 @@ interface SEOProps {
 
 export const SEO = ({
   title,
-  description = "Inventor Design Studio is a leading creative technology studio specializing in software development, UI/UX design, and cinematic video production.",
+  description = "Inventor Design Studio crafts scalable software, modern UI/UX design, and cinematic video production for innovative brands worldwide.",
   path = "",
   ogImage = `${BASE_URL}/logo.png`,
   ogType = "website",
   schema,
   noindex = false,
 }: SEOProps) => {
-  const fullTitle = title ? `${title} | ${BRAND_NAME}` : `${BRAND_NAME} | Creative Technology Studio`;
+  // Format title and prevent duplicate brand appending
+  let fullTitle = title || `${BRAND_NAME} | Software & Video Production`;
+  if (title && !title.toLowerCase().includes("inventor design studio")) {
+    fullTitle = `${title} | ${BRAND_NAME}`;
+  }
+  if (fullTitle.length > 60) {
+    fullTitle = fullTitle.slice(0, 60).trim();
+  }
+
   const canonicalUrl = `${BASE_URL}${path}`;
+
+  // Keep meta description within search engine sweet spot (25-155 characters)
+  const cleanDescription = description && description.length > 155 
+    ? `${description.slice(0, 152).trim()}...` 
+    : description;
 
   useEffect(() => {
     // 1. Update Title
@@ -41,7 +54,7 @@ export const SEO = ({
     };
 
     // 2. Standard Meta
-    setMeta("description", description);
+    setMeta("description", cleanDescription);
     setMeta("robots", noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1");
 
     // 3. Canonical Link
@@ -56,7 +69,7 @@ export const SEO = ({
     // 4. OpenGraph Meta
     setMeta("og:site_name", BRAND_NAME, true);
     setMeta("og:title", fullTitle, true);
-    setMeta("og:description", description, true);
+    setMeta("og:description", cleanDescription, true);
     setMeta("og:url", canonicalUrl, true);
     setMeta("og:type", ogType, true);
     setMeta("og:image", ogImage, true);
@@ -65,7 +78,7 @@ export const SEO = ({
     // 5. Twitter Card Meta
     setMeta("twitter:card", "summary_large_image");
     setMeta("twitter:title", fullTitle);
-    setMeta("twitter:description", description);
+    setMeta("twitter:description", cleanDescription);
     setMeta("twitter:image", ogImage);
 
     // 6. JSON-LD Structured Data

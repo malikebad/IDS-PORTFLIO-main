@@ -331,8 +331,8 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-background text-white font-sans antialiased overflow-x-hidden">
       <SEO
-        title="Inventor Design Studio | Software Development & Cinematic Video Production"
-        description="Leading creative technology studio specializing in software development, UI/UX design, viral video reels, and cinematic 16:9 widescreen video production."
+        title="Software &amp; Video Production Studio"
+        description="Inventor Design Studio crafts scalable software, modern UI/UX design, and cinematic video production for innovative brands worldwide."
         path="/"
       />
       <Navigation />

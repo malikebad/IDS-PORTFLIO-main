@@ -114,8 +114,8 @@ const Services = () => {
   return (
     <div className="min-h-screen bg-background text-white font-sans antialiased">
       <SEO
-        title="Services & Capabilities | Software, UI/UX & Video Production"
-        description="Comprehensive creative technology studio services: full-stack software development, UI/UX product design, branding systems, and cinematic video production."
+        title="Services &amp; Capabilities"
+        description="Full-stack software engineering, UI/UX design, cloud architecture, and cinematic video production tailored for ambitious brands."
         path="/services"
         schema={[
           getServiceSchema(),

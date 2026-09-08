@@ -1123,8 +1123,8 @@ const Projects = () => {
   return (
     <div className="bg-[#0D0D0D] text-white font-sans antialiased overflow-x-hidden">
       <SEO
-        title="Featured Projects, Video Showcase & Viral Reels"
-        description="Explore Inventor Design Studio's creative deliverables: high-retention 16:9 showcase videos, viral 9:16 social media reels, full-stack web platforms, and UI/UX design."
+        title="Projects &amp; Video Showcase"
+        description="Explore our portfolio: high-retention 16:9 showcase videos, viral 9:16 reels, full-stack web platforms, and UI/UX product design."
         path="/projects"
         schema={[
           getBreadcrumbSchema([

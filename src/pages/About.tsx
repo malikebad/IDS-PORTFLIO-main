@@ -138,8 +138,8 @@ const About = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="About Our Studio & Vision"
-        description="Learn about Inventor Design Studio: our multidisciplinary team of engineers, designers, and visual storytellers transforming digital experiences worldwide."
+        title="About Our Studio"
+        description="Learn about Inventor Design Studio: our team of software engineers, designers, and video storytellers building modern digital products."
         path="/about"
         schema={getBreadcrumbSchema([
           { name: "Home", url: "/" },
