@@ -398,6 +398,7 @@ const Home = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-2 sm:mb-3 md:mb-4 lg:mb-6"
           >
+            <span className="sr-only">Inventor Design Studio — Software Development &amp; Cinematic Video Production: </span>
             <span className="block mb-1 sm:mb-2">Ship Faster.</span>
             <span className="relative inline-block">
               Scale Smarter.
