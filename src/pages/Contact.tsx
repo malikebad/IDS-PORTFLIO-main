@@ -39,18 +39,24 @@ const Contact = () => {
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
+      let data: any = null;
+      try {
+        const text = await response.text();
+        data = text ? JSON.parse(text) : null;
+      } catch {
+        data = null;
+      }
 
-      if (response.ok && data.success) {
+      if (response.ok || data?.success) {
         trackEvent("contact_form_submitted", { subject: formData.subject });
         toast({
           title: "Message Sent Successfully!",
-          description: "Thank you for reaching out. We have sent a confirmation to your email and will be in touch shortly.",
+          description: "Thank you for reaching out. We have received your inquiry and will be in touch shortly.",
         });
         setFormData({ name: "", email: "", phone: "", subject: "", message: "", _hp_company: "" });
         setFormStatus("success");
       } else {
-        throw new Error(data.error || "Something went wrong while sending your message.");
+        throw new Error(data?.error || "Something went wrong while sending your message.");
       }
     } catch (err: any) {
       toast({
@@ -129,8 +135,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold text-base sm:text-lg mb-1 sm:mb-2">Email</h3>
-                      <p className="text-sm sm:text-base text-muted-foreground">info@inventerdesignstudio.com</p>
-                      <a href="mailto:info@inventerdesignstudio.com" className="inline-flex items-center mt-2 text-xs sm:text-sm font-medium text-primary hover:underline">
+                      <p className="text-sm sm:text-base text-muted-foreground">info@inventordesignstudio.io</p>
+                      <a href="mailto:info@inventordesignstudio.io" className="inline-flex items-center mt-2 text-xs sm:text-sm font-medium text-primary hover:underline">
                         Send an email <ArrowRight className="ml-1 w-3 h-3" />
                       </a>
                     </div>
@@ -162,7 +168,7 @@ const Contact = () => {
                         <br />
                         Lahore, 54000
                       </p>
-                      <a href="https://www.google.com/maps/search/?api=1&query=First+Floor+Plaza+No.+8+H+A4+Commercial+Area+Block+H+Valencia+Lahore+54000" target="_blank" rel="noopener noreferrer" className="inline-flex items-center mt-2 text-xs sm:text-sm font-medium text-primary hover:underline">
+                      <a href="https://maps.app.goo.gl/vYfa48yTxy26Z9ucA" target="_blank" rel="noopener noreferrer" className="inline-flex items-center mt-2 text-xs sm:text-sm font-medium text-primary hover:underline">
                         Get directions <ArrowRight className="ml-1 w-3 h-3" />
                       </a>
                     </div>
@@ -176,18 +182,34 @@ const Contact = () => {
                   <Clock className="w-5 h-5 text-primary" />
                   <h3 className="font-semibold text-base sm:text-lg">Business Hours</h3>
                 </div>
-                <div className="grid grid-cols-2 gap-2 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Monday - Friday:</span>
-                    <span className="font-medium">9:00 AM - 6:00 PM</span>
+                <div className="space-y-2.5 text-sm">
+                  <div className="flex justify-between items-center py-1 border-b border-white/5">
+                    <span className="text-muted-foreground">Monday</span>
+                    <span className="font-medium text-lime-400">7:00 PM – 4:30 AM</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Saturday:</span>
-                    <span className="font-medium">10:00 AM - 4:00 PM</span>
+                  <div className="flex justify-between items-center py-1 border-b border-white/5">
+                    <span className="text-muted-foreground">Tuesday</span>
+                    <span className="font-medium text-lime-400">7:00 PM – 4:30 AM</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Sunday:</span>
-                    <span className="font-medium">Closed</span>
+                  <div className="flex justify-between items-center py-1 border-b border-white/5">
+                    <span className="text-muted-foreground">Wednesday</span>
+                    <span className="font-medium text-lime-400">7:00 PM – 4:30 AM</span>
+                  </div>
+                  <div className="flex justify-between items-center py-1 border-b border-white/5">
+                    <span className="text-muted-foreground">Thursday</span>
+                    <span className="font-medium text-lime-400">7:00 PM – 4:30 AM</span>
+                  </div>
+                  <div className="flex justify-between items-center py-1 border-b border-white/5">
+                    <span className="text-muted-foreground">Friday</span>
+                    <span className="font-medium text-lime-400">7:00 PM – 4:30 AM</span>
+                  </div>
+                  <div className="flex justify-between items-center py-1 border-b border-white/5">
+                    <span className="text-muted-foreground">Saturday</span>
+                    <span className="font-medium text-lime-400">7:00 PM – 4:30 AM</span>
+                  </div>
+                  <div className="flex justify-between items-center py-1">
+                    <span className="text-muted-foreground">Sunday</span>
+                    <span className="font-medium text-red-400/90">Closed</span>
                   </div>
                 </div>
               </div>

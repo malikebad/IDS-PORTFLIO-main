@@ -16,7 +16,7 @@ export const SEO = ({
   title,
   description = "Inventor Design Studio is a leading creative technology studio specializing in software development, UI/UX design, and cinematic video production.",
   path = "",
-  ogImage = `${BASE_URL}/assets/logo.jpeg`,
+  ogImage = `${BASE_URL}/logo.png`,
   ogType = "website",
   schema,
   noindex = false,

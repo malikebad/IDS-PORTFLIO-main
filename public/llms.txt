@@ -3,9 +3,11 @@
 > Leading creative technology studio bridging software development, UI/UX design, visual storytelling, and video production.
 
 Website: https://inventordesignstudio.io
-Contact: info@inventerdesignstudio.com
+Contact: info@inventordesignstudio.io
 Phone: +92 370 4441788
 HQ: First Floor, Plaza No. 8, H, A4, Commercial Area Block H Valencia, Lahore, 54000
+Directions: https://maps.app.goo.gl/vYfa48yTxy26Z9ucA
+Operating Hours: Monday – Saturday: 7:00 PM – 4:30 AM PKT | Sunday: Closed
 
 ## Core Capabilities & Services
 
@@ -26,8 +28,7 @@ HQ: First Floor, Plaza No. 8, H, A4, Commercial Area Block H Valencia, Lahore, 5
 
 ## Key Links & Resources
 
-- Portfolio & Work: https://inventordesignstudio.io/portfolio
-- Projects Journey: https://inventordesignstudio.io/projects
+- Featured Projects & Video Showcase: https://inventordesignstudio.io/projects
 - Services Breakdown: https://inventordesignstudio.io/services
 - Studio About & Story: https://inventordesignstudio.io/about
 - Frequently Asked Questions: https://inventordesignstudio.io/faq

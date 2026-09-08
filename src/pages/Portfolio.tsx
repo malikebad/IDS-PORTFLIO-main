@@ -3,56 +3,58 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { getBreadcrumbSchema } from "@/lib/structuredData";
-import interiorProject from "@/assets/project-interior-1.jpg";
-import architectureProject from "@/assets/project-architecture-1.jpg";
 import brandingProject from "@/assets/BrandingIdentity.png";
 import digitalProject from "@/assets/UIUXProductDesign.png";
-import { ArrowRight, Filter, Tag } from "lucide-react";
+import webDevProject from "@/assets/webdevelopment.png";
+import socialProject from "@/assets/SocialMediaContent.png";
+import { ArrowRight, Filter, Tag, ChevronLeft, ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { useRef } from "react";
 
 const Portfolio = () => {
   const [filter, setFilter] = useState("All");
-  const [animatedProjects, setAnimatedProjects] = useState([]);
+  const [animatedProjects, setAnimatedProjects] = useState<any[]>([]);
   
   const allProjects = useMemo(() => [
     {
-      id: 1,
-      title: "Urban Residence",
-      category: "Interior Design",
-      description: "Luxury apartment transformation with minimalist aesthetics and functional elegance",
-      image: interiorProject,
-      client: "Private Client",
-      year: "2024",
-      tags: ["Residential", "Minimalist", "Luxury"]
+      id: "video-production",
+      title: "Cinematic Video Production & Viral Reels",
+      category: "Video Production",
+      description: "Commercials, YouTube documentary essays, and viral short-form reels with custom motion design, sound design, and color grading",
+      image: socialProject,
+      client: "Global Content Creators",
+      year: "2025",
+      tags: ["Video Production", "4K Color Grade", "Viral Reels"]
     },
     {
-      id: 2,
-      title: "Modern Complex",
-      category: "Architecture",
-      description: "Contemporary commercial building featuring geometric patterns and sustainable design",
-      image: architectureProject,
-      client: "Urban Development Corp",
+      id: "cloud-saas",
+      title: "Enterprise SaaS & Cloud Platform",
+      category: "Software Engineering",
+      description: "Scalable full-stack SaaS platform built with modern React, Node.js, real-time analytics, and automated CI/CD pipelines",
+      image: webDevProject,
+      client: "Tech Innovations Corp",
       year: "2024",
-      tags: ["Commercial", "Sustainable", "Modern"]
+      tags: ["SaaS", "Next.js", "Cloud DevOps"]
     },
     {
-      id: 3,
-      title: "Brand Identity",
+      id: "brand-identity",
+      title: "Brand Identity & Design System",
       category: "Branding",
-      description: "Complete brand overhaul for a tech startup, including logo and visual identity",
+      description: "Complete visual identity system, brand positioning strategy, typography guidelines, and digital marketing design",
       image: brandingProject,
-      client: "Tech Innovators",
+      client: "Venture Partners",
       year: "2024",
-      tags: ["Tech", "Identity", "Digital"]
+      tags: ["Branding", "Identity", "Design System"]
     },
     {
-      id: 4,
-      title: "Digital Platform",
+      id: "digital-uiux",
+      title: "High-Converting UI/UX Platform",
       category: "UI/UX Design",
-      description: "Intuitive web platform design with focus on user experience and accessibility",
+      description: "Intuitive web and mobile user interface design focused on seamless user journeys, accessibility, and conversion rate optimization",
       image: digitalProject,
       client: "Digital Solutions Inc",
       year: "2024",
-      tags: ["Web", "Mobile", "Accessible"]
+      tags: ["UI/UX", "Mobile", "Accessible"]
     },
   ], []);
   
@@ -71,10 +73,10 @@ const Portfolio = () => {
   }, [filteredProjects]);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-white font-sans antialiased">
       <SEO
         title="Portfolio & Case Studies"
-        description="Explore our curated portfolio of impactful digital products, SaaS engineering, architectural visual storytelling, branding systems, and cinematic video reels."
+        description="Explore our curated portfolio of software engineering, UI/UX product design, branding systems, and cinematic video reels."
         path="/portfolio"
         schema={getBreadcrumbSchema([
           { name: "Home", url: "/" },
@@ -95,31 +97,58 @@ const Portfolio = () => {
           <span className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold tracking-wider text-primary bg-primary/10 rounded-full">OUR WORK</span>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-white/80 bg-clip-text">Our Portfolio</h1>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            A curated collection of our most impactful projects, showcasing innovation across
-            architecture, interior design, branding, and digital experiences.
+            A curated collection of our most impactful deliverables across video production, full-stack software development, and UI/UX design.
           </p>
         </div>
       </section>
 
       {/* Filter Bar */}
       <section className="py-4 sm:py-5 px-4 sm:px-6 border-y border-border/40 backdrop-blur-xl sticky top-16 sm:top-20 z-30 bg-background/90 shadow-sm">
-        <div className="container mx-auto">
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide">
-            <Filter className="w-4 h-4 text-primary mr-1" />
-            {categories.map(category => (
+        <div className="container mx-auto relative flex items-center group/filter">
+          <button
+            onClick={() => {
+              const el = document.getElementById("portfolio-filter-strip");
+              if (el) el.scrollBy({ left: -220, behavior: "smooth" });
+            }}
+            aria-label="Slide Left"
+            className="hidden sm:flex z-10 w-8 h-8 rounded-full bg-card border border-border/60 text-white items-center justify-center hover:bg-primary hover:text-black transition-all shadow-md shrink-0 mr-2 cursor-pointer"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+
+          <div
+            id="portfolio-filter-strip"
+            className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-hide scroll-smooth w-full select-none"
+          >
+            <Filter className="w-4 h-4 text-primary mr-1 shrink-0" />
+            {categories.map((category) => (
               <button
                 key={category}
-                onClick={() => setFilter(category)}
-                className={`px-4 py-2 text-sm rounded-full whitespace-nowrap transition-all ${
+                onClick={(e) => {
+                  setFilter(category);
+                  e.currentTarget.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+                }}
+                className={`px-4 py-2 text-xs sm:text-sm rounded-full whitespace-nowrap transition-all shrink-0 ${
                   filter === category 
-                    ? "bg-primary text-primary-foreground" 
-                    : "bg-background hover:bg-primary/10 border border-border/50"
+                    ? "bg-primary text-primary-foreground font-semibold shadow-md shadow-primary/20" 
+                    : "bg-background hover:bg-primary/10 border border-border/50 text-white/70 hover:text-white"
                 }`}
               >
                 {category}
               </button>
             ))}
           </div>
+
+          <button
+            onClick={() => {
+              const el = document.getElementById("portfolio-filter-strip");
+              if (el) el.scrollBy({ left: 220, behavior: "smooth" });
+            }}
+            aria-label="Slide Right"
+            className="hidden sm:flex z-10 w-8 h-8 rounded-full bg-card border border-border/60 text-white items-center justify-center hover:bg-primary hover:text-black transition-all shadow-md shrink-0 ml-2 cursor-pointer"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
         </div>
       </section>
 
@@ -137,7 +166,7 @@ const Portfolio = () => {
               >
                 <div className={`space-y-6 ${index % 2 === 1 ? "lg:col-start-2" : ""}`}>
                   <div className="flex flex-wrap gap-2 mb-2">
-                    {project.tags.map(tag => (
+                    {project.tags.map((tag: string) => (
                       <span key={tag} className="inline-flex items-center px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary">
                         <Tag className="w-3 h-3 mr-1" /> {tag}
                       </span>
@@ -167,9 +196,9 @@ const Portfolio = () => {
                       <p className="text-muted-foreground">{project.year}</p>
                     </div>
                     <div className="ml-auto self-end">
-                      <button className="flex items-center text-primary font-medium group-hover:underline">
-                        View Details <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                      </button>
+                      <Link to="/projects" className="flex items-center text-primary font-medium group-hover:underline">
+                        Explore Showcase <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -204,14 +233,14 @@ const Portfolio = () => {
           <div className="max-w-3xl mx-auto bg-background/30 backdrop-blur-md p-8 sm:p-12 rounded-3xl border border-primary/20 shadow-xl">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-primary-foreground bg-clip-text text-transparent">Ready to Start Your Project?</h2>
             <p className="text-lg sm:text-xl mb-8 text-muted-foreground max-w-2xl mx-auto">
-              Let's collaborate to bring your vision to life with exceptional design and innovation
+              Let's collaborate to bring your vision to life with exceptional video production and engineering excellence.
             </p>
-            <a
-              href="/contact"
+            <Link
+              to="/contact"
               className="inline-flex items-center justify-center rounded-full text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-12 px-8 shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:scale-105"
             >
               Get in Touch <ArrowRight className="ml-2 w-4 h-4" />
-            </a>
+            </Link>
           </div>
         </div>
       </section>

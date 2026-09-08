@@ -115,8 +115,8 @@ const PrivacyPolicy = () => {
                   <div className="space-y-4 text-sm">
                     <div className="flex items-center gap-2">
                       <Mail className="w-4 h-4 text-primary shrink-0" />
-                      <a href="mailto:info@inventordesignstudio.com" className="text-muted-foreground hover:text-primary transition-colors">
-                        info@inventordesignstudio.com
+                      <a href="mailto:info@inventordesignstudio.io" className="text-muted-foreground hover:text-primary transition-colors">
+                        info@inventordesignstudio.io
                       </a>
                     </div>
                     <div className="flex items-start gap-2">
@@ -213,7 +213,7 @@ const PrivacyPolicy = () => {
                   <p className="text-muted-foreground">
                     Depending on your location, you may have rights to access, correct, or delete your personal data, withdraw consent for
                     marketing communications, request a copy of the data we hold about you, or file a complaint with your local data protection
-                    authority. To exercise these rights, contact us at <a className="text-primary hover:underline" href="mailto:info@inventordesignstudio.com">info@inventordesignstudio.com</a>.
+                    authority. To exercise these rights, contact us at <a className="text-primary hover:underline" href="mailto:info@inventordesignstudio.io">info@inventordesignstudio.io</a>.
                   </p>
                 </div>
 
@@ -264,8 +264,8 @@ const PrivacyPolicy = () => {
                   <div className="space-y-4">
                     <div className="flex items-center gap-3 p-4 rounded-lg bg-card/50 border border-border/50">
                       <Mail className="w-5 h-5 text-primary shrink-0" />
-                      <a href="mailto:info@inventordesignstudio.com" className="text-muted-foreground hover:text-primary transition-colors">
-                        info@inventordesignstudio.com
+                      <a href="mailto:info@inventordesignstudio.io" className="text-muted-foreground hover:text-primary transition-colors">
+                        info@inventordesignstudio.io
                       </a>
                     </div>
                     <div className="flex items-start gap-3 p-4 rounded-lg bg-card/50 border border-border/50">

@@ -93,7 +93,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     console.error("Contact API Serverless Error:", error);
     return res.status(500).json({
       success: false,
-      error: "Failed to send message. Please reach out to info@inventerdesignstudio.com directly.",
+      error: "Failed to send message. Please reach out to info@inventordesignstudio.io directly.",
     });
   }
 }

@@ -2,11 +2,10 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
-import Portfolio from "./pages/Portfolio";
 import Projects from "./pages/Projects";
-import CaseStudy from "./pages/CaseStudy"; // Import CaseStudy
+import CaseStudy from "./pages/CaseStudy";
 import About from "./pages/About";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
@@ -25,7 +24,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/portfolio" element={<Navigate to="/projects" replace />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/case-study/:id" element={<CaseStudy />} /> {/* Add this line */}
           <Route path="/about" element={<About />} />

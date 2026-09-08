@@ -183,7 +183,7 @@ app.post("/api/contact", async (req, res) => {
             </p>
             <div class="footer">
               &copy; ${new Date().getFullYear()} INVENTER Design Studio &bull; Lahore, Pakistan<br>
-              <a href="mailto:info@inventerdesignstudio.com" style="color: #a3e635; text-decoration: none;">info@inventerdesignstudio.com</a>
+              <a href="mailto:info@inventordesignstudio.io" style="color: #a3e635; text-decoration: none;">info@inventordesignstudio.io</a>
             </div>
           </div>
         </body>
@@ -242,23 +242,45 @@ app.post("/api/newsletter", async (req, res) => {
       });
     }
 
-    const receiverEmail = process.env.CONTACT_RECEIVER_EMAIL || process.env.SMTP_USER || "ebadm7251@gmail.com";
-    const senderEmail = process.env.SMTP_USER || "ebadm7251@gmail.com";
+    const receiverEmail = process.env.CONTACT_RECEIVER_EMAIL || process.env.SMTP_USER || "info@inventordesignstudio.io";
+    const senderEmail = process.env.SMTP_USER || "info@inventordesignstudio.io";
 
-    // Notify admin
+    // 1. Notify admin
     await transporter.sendMail({
-      from: `"INVENTER Newsletter" <${senderEmail}>`,
+      from: `"Inventor Newsletter" <${senderEmail}>`,
       to: receiverEmail,
       subject: `[New Newsletter Subscriber] ${email}`,
       html: `
         <div style="font-family: sans-serif; padding: 20px; background: #0f172a; color: #fff; border-radius: 8px;">
           <h2 style="color: #a3e635;">New Newsletter Subscription</h2>
-          <p>A new user has subscribed to the INVENTER Design Studio newsletter:</p>
+          <p>A new user has subscribed to the Inventor Design Studio newsletter:</p>
           <p style="font-size: 18px; font-weight: bold; color: #38bdf8;">${email}</p>
           <p style="color: #94a3b8; font-size: 12px;">Subscribed on ${new Date().toLocaleString()}</p>
         </div>
       `,
     });
+
+    // 2. Send subscriber welcome email
+    try {
+      await transporter.sendMail({
+        from: `"Inventor Design Studio" <${senderEmail}>`,
+        to: email,
+        subject: `Welcome to Inventor Design Studio Insights`,
+        html: `
+          <div style="font-family: sans-serif; max-width: 540px; margin: 0 auto; background: #09090b; color: #fff; border-radius: 12px; padding: 28px; border: 1px solid #27272a;">
+            <h2 style="color: #a3e635; margin-top: 0;">Welcome to Inventor Design Studio</h2>
+            <p style="color: #d4d4d8; font-size: 15px; line-height: 1.6;">
+              Thank you for subscribing! You're now on the insider list for our latest case studies, Agentic AI systems, video showcases, and studio insights.
+            </p>
+            <p style="color: #71717a; font-size: 13px; margin-top: 24px;">
+              Visit us anytime at <a href="https://inventordesignstudio.io" style="color: #a3e635;">inventordesignstudio.io</a>.
+            </p>
+          </div>
+        `,
+      });
+    } catch (e) {
+      console.warn("Subscriber note:", e.message);
+    }
 
     return res.status(200).json({
       success: true,

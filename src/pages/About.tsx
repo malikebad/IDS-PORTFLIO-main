@@ -48,20 +48,18 @@ const About = () => {
       <h2 className="text-3xl sm:text-4xl font-bold mb-6">Our Story</h2>
       <div className="space-y-4 sm:space-y-6 text-base sm:text-lg text-muted-foreground leading-relaxed">
         <p>
-          Founded in 2018, Inventor Design Studio emerged from a shared vision: to create
-          design solutions that transcend trends and stand the test of time. What began as a
-          small collective of architects and designers has evolved into a full-service design
-          studio.
+          Founded in 2018, Inventor Design Studio emerged from a shared vision: to build
+          digital platforms and video productions that captivate audiences and drive measurable growth. What began as a
+          specialized creative studio has evolved into a full-service creative technology and media production powerhouse.
         </p>
         <p>
-          Our multidisciplinary approach brings together expertise in architecture, interior
-          design, branding, and digital experiences. We believe that great design happens at
-          the intersection of form and function, where creativity meets purpose.
+          Our multidisciplinary approach brings together expertise in full-stack software development,
+          UI/UX product design, cinematic video production, and brand growth systems. We believe that great digital experiences happen at
+          the intersection of engineering rigor and compelling visual storytelling.
         </p>
         <p>
-          Today, we work with clients around the globe, transforming spaces and brands
-          through innovative thinking, meticulous craftsmanship, and a relentless pursuit of
-          excellence.
+          Today, we partner with visionary brands, high-growth startups, and global creators worldwide,
+          delivering scalable software systems and viral video campaigns through innovative thinking and meticulous execution.
         </p>
       </div>
       <div className="pt-6 flex items-center gap-2 text-primary">

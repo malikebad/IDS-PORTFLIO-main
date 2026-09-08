@@ -26,7 +26,6 @@ const Navigation = () => {
 
   const mainNavLinks = [
     { name: "Home", path: "/" },
-    { name: "Portfolio", path: "/portfolio" },
     { name: "Projects", path: "/projects" },
     { name: "About", path: "/about" },
     { name: "Services", path: "/services" },

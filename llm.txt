@@ -30,10 +30,12 @@ Cloud: AWS, Google Cloud, Azure, Docker, Kubernetes
 Design: Figma, Adobe XD, Sketch, After Effects, Premiere Pro
 
 ## Contact
-Email: info@inventerdesignstudio.com
+Email: info@inventordesignstudio.io
 Phone: +92 370 4441788
 Location: Lahore, Pakistan
-Website: https://inventerdesignstudio.com
+Website: https://inventordesignstudio.io
+Directions: https://maps.app.goo.gl/vYfa48yTxy26Z9ucA
+Operating Hours: Monday – Saturday: 7:00 PM – 4:30 AM | Sunday: Closed
 
 ## Achievements
 - 150+ projects delivered
@@ -49,8 +51,8 @@ Website: https://inventerdesignstudio.com
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Inventor Design Studio",
-  "url": "https://inventerdesignstudio.com",
-  "logo": "https://inventerdesignstudio.com/ids-logo.png",
+  "url": "https://inventordesignstudio.io",
+  "logo": "https://inventordesignstudio.io/logo.png",
   "description": "Leading creative technology studio specializing in software development, UI/UX design, video production, and digital experiences.",
   "foundingDate": "2018",
   "address": {
@@ -65,8 +67,11 @@ Website: https://inventerdesignstudio.com
     "@type": "ContactPoint",
     "telephone": "+92-370-4441788",
     "contactType": "customer service",
+    "email": "info@inventordesignstudio.io",
     "availableLanguage": "English"
   },
+  "hasMap": "https://maps.app.goo.gl/vYfa48yTxy26Z9ucA",
+  "openingHours": "Mo-Sa 19:00-04:30",
   "serviceType": ["Software Development", "Video Production", "UI/UX Design", "Branding", "DevOps"],
   "areaServed": "Global"
 }

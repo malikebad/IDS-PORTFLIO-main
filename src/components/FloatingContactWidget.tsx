@@ -40,7 +40,7 @@ const FloatingContactWidget = () => {
       console.error('Form submission error:', error);
       toast({
         title: "Message Failed to Send",
-        description: "Please try again or contact us directly at info@inventerdesignstudio.com",
+        description: "Please try again or contact us directly at info@inventordesignstudio.io",
         variant: "destructive",
       });
     } finally {

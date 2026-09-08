@@ -1,5 +1,20 @@
 import { useMemo, useState } from "react";
-import { Building, Palette, Smartphone, Package, ArrowRight, Check, ChevronRight, ArrowUpRight, Search, PenTool, Rocket } from "lucide-react";
+import { 
+  Video, 
+  Palette, 
+  Smartphone, 
+  Code2, 
+  Zap, 
+  ArrowRight, 
+  Check, 
+  ChevronRight, 
+  ArrowUpRight, 
+  Search, 
+  PenTool, 
+  Rocket, 
+  Film,
+  Sparkles
+} from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
@@ -11,34 +26,65 @@ import { motion } from "framer-motion";
 const Services = () => {
   const [activeService, setActiveService] = useState<string | null>(null);
   
-  // Services data extracted to a constant outside the component for better performance
   const SERVICES_DATA = [
     {
-      icon: Building,
-      title: "Architecture & Interiors",
+      icon: Video,
+      title: "Cinematic Video Production & Reels",
       description:
-        "From conceptual design to construction documentation, we create spaces that inspire and function beautifully. Our architectural solutions blend innovation with timeless design principles.",
+        "From viral short-form reels to widescreen documentary-style YouTube video essays, we craft high-retention video edits with kinetic typography, 3D motion graphics, DaVinci Resolve color grading, and immersive sound design.",
       features: [
-        "Residential Architecture",
-        "Commercial Spaces",
-        "Interior Design",
-        "Space Planning",
+        "Viral 9:16 Social Media Reels & TikToks",
+        "16:9 Widescreen Documentary Video Essays",
+        "Alex Hormozi & Iman Gadzhi Style Edits",
+        "DaVinci Resolve Cinematic Color Grading",
       ],
-      cta: "Explore Architecture Services",
+      cta: "Explore Video Production",
+      color: "from-lime-400 to-lime-600",
+      bgColor: "bg-lime-400/10",
+      textColor: "text-lime-400",
+    },
+    {
+      icon: Code2,
+      title: "Software & Web Engineering",
+      description:
+        "High-performance websites, SaaS platforms, and enterprise web applications engineered for speed, reliability, and scale. We build full-stack digital solutions using modern React, Next.js, and TypeScript ecosystems.",
+      features: [
+        "Custom SaaS & Web Application Development",
+        "Responsive Full-Stack Architecture",
+        "API Engineering & Third-Party Integrations",
+        "Performance Optimization & Schema.org SEO",
+      ],
+      cta: "Explore Web Engineering",
       color: "from-blue-500 to-indigo-600",
       bgColor: "bg-blue-500/10",
       textColor: "text-blue-500",
     },
     {
-      icon: Palette,
-      title: "Branding & Identity",
+      icon: Smartphone,
+      title: "UI/UX & Digital Product Design",
       description:
-        "We craft distinctive brand identities that resonate with your audience and stand out in the market. From logos to complete brand systems, we ensure consistency and impact.",
+        "Creating digital experiences that are intuitive, engaging, and conversion-oriented. We design interfaces that users love and that drive measurable business growth.",
       features: [
-        "Brand Strategy",
-        "Logo Design",
-        "Visual Identity Systems",
-        "Brand Guidelines",
+        "User Experience Research & Wireframing",
+        "Interactive High-Fidelity Prototyping",
+        "Scalable Design Systems & Component Libraries",
+        "WCAG 2.1 AA Accessibility Standards",
+      ],
+      cta: "View Digital Design Services",
+      color: "from-emerald-500 to-teal-600",
+      bgColor: "bg-emerald-500/10",
+      textColor: "text-emerald-500",
+    },
+    {
+      icon: Palette,
+      title: "Branding & Visual Identity Systems",
+      description:
+        "We craft distinctive brand identities that resonate with your audience and stand out in the market. From logos to complete brand systems, we ensure visual authority and market consistency.",
+      features: [
+        "Brand Strategy & Market Positioning",
+        "Logo Design & Visual Identity Systems",
+        "Comprehensive Brand Guidelines",
+        "Packaging & Marketing Asset Design",
       ],
       cta: "Discover Branding Solutions",
       color: "from-amber-500 to-orange-600",
@@ -46,47 +92,30 @@ const Services = () => {
       textColor: "text-amber-500",
     },
     {
-      icon: Smartphone,
-      title: "UI/UX & Web Design",
+      icon: Zap,
+      title: "DevOps & Cloud Infrastructure",
       description:
-        "Creating digital experiences that are intuitive, engaging, and beautiful. We design interfaces that users love and that drive measurable results for your business.",
+        "Robust cloud architecture, automated CI/CD deployment pipelines, containerization, and security hardening to ensure your digital applications scale seamlessly with zero downtime.",
       features: [
-        "Website Design",
-        "Mobile App Design",
-        "User Experience Research",
-        "Prototyping & Testing",
+        "CI/CD Pipeline Automation",
+        "Docker & Kubernetes Containerization",
+        "Cloud Deployment & Serverless Architecture",
+        "Security Monitoring & Observability",
       ],
-      cta: "View Digital Design Services",
-      color: "from-primary to-primary-foreground",
-      bgColor: "bg-primary/10",
-      textColor: "text-primary",
-    },
-    {
-      icon: Package,
-      title: "Visualization & 3D Rendering",
-      description:
-        "Bring your projects to life before they're built. Our photorealistic 3D renderings and animations help you visualize and communicate your design vision effectively.",
-      features: [
-        "Architectural Visualization",
-        "Interior Renderings",
-        "3D Animations",
-        "Virtual Reality Tours",
-      ],
-      cta: "See Visualization Work",
-      color: "from-emerald-500 to-teal-600",
-      bgColor: "bg-emerald-500/10",
-      textColor: "text-emerald-500",
+      cta: "Explore Cloud Infrastructure",
+      color: "from-purple-500 to-indigo-600",
+      bgColor: "bg-purple-500/10",
+      textColor: "text-purple-400",
     },
   ];
   
-  // Use the constant data with useMemo for better performance
   const services = useMemo(() => SERVICES_DATA, []);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-white font-sans antialiased">
       <SEO
-        title="Services & Capabilities | Software, UI/UX & Video"
-        description="Comprehensive creative technology studio services: full-stack software development, UI/UX product design, branding systems, 3D visualization, and cinematic video production."
+        title="Services & Capabilities | Software, UI/UX & Video Production"
+        description="Comprehensive creative technology studio services: full-stack software development, UI/UX product design, branding systems, and cinematic video production."
         path="/services"
         schema={[
           getServiceSchema(),
@@ -108,18 +137,18 @@ const Services = () => {
         
         <div className="container relative mx-auto text-center animate-fade-in">
           <span className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold tracking-wider text-primary bg-primary/10 rounded-full">OUR EXPERTISE</span>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-white/80 bg-clip-text">Transforming Visions Into Reality</h1>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-white/80 bg-clip-text">Transforming Visions Into Scalable Products</h1>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            Comprehensive design solutions tailored to elevate your brand, space, and digital presence
+            End-to-end digital solutions tailored to elevate your software platforms, video content, and brand authority.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Button size="lg" className="rounded-full shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:scale-105 transition-all duration-300">
+            <Button size="lg" className="rounded-full shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:scale-105 transition-all duration-300" asChild>
               <Link to="/contact" className="flex items-center">
                 Get Started <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" className="rounded-full hover:bg-primary/10 transition-all duration-300">
-              <Link to="/portfolio">View Our Work</Link>
+            <Button size="lg" variant="outline" className="rounded-full hover:bg-primary/10 transition-all duration-300" asChild>
+              <Link to="/projects">View Video &amp; Project Showcase</Link>
             </Button>
           </div>
         </div>
@@ -130,52 +159,53 @@ const Services = () => {
         <div className="container mx-auto">
           <div className="text-center mb-12 sm:mb-16">
             <span className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold tracking-wider text-primary bg-primary/10 rounded-full">SERVICES</span>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Our Specialized Services</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Our Specialized Capabilities</h2>
             <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto">
-              Tailored solutions designed to meet your specific needs and exceed your expectations
+              Precision engineering and cinematic storytelling crafted to exceed your business growth benchmarks
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
             {services.map((service, index) => (
               <div
                 key={service.title}
-                className="group relative overflow-hidden rounded-2xl bg-card/50 backdrop-blur-sm border border-primary/10 hover:border-primary/20 transition-all duration-300 animate-slide-up"
+                className="group relative overflow-hidden rounded-2xl bg-card/50 backdrop-blur-sm border border-primary/10 hover:border-primary/30 transition-all duration-300 animate-slide-up flex flex-col justify-between"
                 style={{ animationDelay: `${index * 0.1}s` }}
                 onMouseEnter={() => setActiveService(service.title)}
                 onMouseLeave={() => setActiveService(null)}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br opacity-10 rounded-full blur-3xl transition-all duration-500 group-hover:opacity-20 group-hover:scale-150" style={{ background: `linear-gradient(to bottom right, ${service.color.split(' ')[1]}, transparent)` }} />
                 
-                <div className="p-8 sm:p-10 space-y-6 relative z-10">
-                  <div className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl ${service.bgColor} group-hover:scale-110 transition-transform duration-300`}>
-                    <service.icon className={`w-7 h-7 ${service.textColor}`} />
+                <div className="p-8 space-y-6 relative z-10 flex-1 flex flex-col justify-between">
+                  <div className="space-y-4">
+                    <div className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl ${service.bgColor} group-hover:scale-110 transition-transform duration-300`}>
+                      <service.icon className={`w-7 h-7 ${service.textColor}`} />
+                    </div>
+                    
+                    <h2 className="text-xl sm:text-2xl font-bold group-hover:text-primary transition-colors duration-300">{service.title}</h2>
+                    
+                    <p className="text-sm text-muted-foreground leading-relaxed">{service.description}</p>
                   </div>
                   
-                  <h2 className="text-2xl sm:text-3xl font-bold group-hover:text-primary transition-colors duration-300">{service.title}</h2>
-                  
-                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{service.description}</p>
-                  
                   <div className="space-y-3 pt-2">
-                    <h4 className="text-sm font-semibold">Key Features:</h4>
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <h4 className="text-xs font-semibold uppercase tracking-wider text-white/70">Key Deliverables:</h4>
+                    <ul className="space-y-2">
                       {service.features.map((feature) => (
                         <li key={feature} className="flex items-center text-xs sm:text-sm">
-                          <Check className={`w-4 h-4 mr-2 ${service.textColor}`} />
+                          <Check className={`w-4 h-4 mr-2 ${service.textColor} shrink-0`} />
                           <span className="text-muted-foreground">{feature}</span>
                         </li>
                       ))}
                     </ul>
-                  </div>
-                  
-                  <div className="pt-4">
-                    <Link 
-                      to="/contact" 
-                      className={`inline-flex items-center text-sm font-medium ${service.textColor} hover:underline`}
-                    >
-                      {service.cta} <ArrowUpRight className="ml-1 w-4 h-4" />
-                    </Link>
+
+                    <div className="pt-4 border-t border-white/5">
+                      <Link 
+                        to="/contact" 
+                        className={`inline-flex items-center text-sm font-medium ${service.textColor} hover:underline`}
+                      >
+                        {service.cta} <ArrowUpRight className="ml-1 w-4 h-4" />
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -194,34 +224,33 @@ const Services = () => {
             <span className="inline-block px-4 py-1.5 mb-4 text-xs font-semibold tracking-wider text-primary bg-primary/10 rounded-full">OUR APPROACH</span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Our Process</h2>
             <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto">
-              A collaborative approach to bringing your vision to life
+              A collaborative, agile approach to delivering exceptional results
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 relative">
-            {/* Connection line */}
             <div className="absolute top-24 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-primary/30 to-transparent hidden md:block" />
             
             {[
               {
                 step: "01",
-                title: "Discovery",
+                title: "Discovery & Strategy",
                 description:
-                  "We start by understanding your goals, challenges, and vision through in-depth consultations.",
+                  "We analyze your goals, target audience, and technical specs through deep consultations.",
                 icon: Search,
               },
               {
                 step: "02",
-                title: "Design",
+                title: "Engineering & Production",
                 description:
-                  "Our team develops creative concepts and refines them based on your feedback and requirements.",
+                  "Our team builds agile sprints, crafts high-retention video edits, and writes clean code.",
                 icon: PenTool,
               },
               {
                 step: "03",
-                title: "Delivery",
+                title: "Delivery & Growth",
                 description:
-                  "We bring the design to life with meticulous execution and ongoing support to ensure success.",
+                  "We deploy scalable platforms and release optimized video campaigns with continuous support.",
                 icon: Rocket,
               },
             ].map((phase, index) => {
@@ -263,9 +292,9 @@ const Services = () => {
         
         <div className="container relative mx-auto text-center">
           <div className="max-w-3xl mx-auto bg-background/30 backdrop-blur-md p-8 sm:p-12 rounded-3xl border border-primary/20 shadow-xl">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-primary-foreground bg-clip-text text-transparent">Ready to Get Started?</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-primary-foreground bg-clip-text text-transparent">Ready to Build Your Next Big Idea?</h2>
             <p className="text-lg sm:text-xl mb-8 text-muted-foreground max-w-2xl mx-auto">
-              Let's discuss how we can help bring your project to life with our expert services
+              Let's partner together to engineer high-converting digital products and viral video storytelling.
             </p>
             <Button size="lg" className="rounded-full shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:scale-105 transition-all duration-300" asChild>
               <Link to="/contact" className="flex items-center">

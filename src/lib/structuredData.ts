@@ -12,11 +12,12 @@ export const getOrganizationSchema = () => ({
   url: BASE_URL,
   logo: {
     "@type": "ImageObject",
-    url: `${BASE_URL}/assets/logo.jpeg`,
+    url: `${BASE_URL}/logo.png`,
     caption: BRAND_NAME,
     width: "512",
     height: "512",
   },
+  image: `${BASE_URL}/logo.png`,
   description:
     "Leading creative technology studio specializing in software development, UI/UX design, video production, and digital experiences.",
   address: {
@@ -30,9 +31,18 @@ export const getOrganizationSchema = () => ({
     "@type": "ContactPoint",
     telephone: "+92-370-4441788",
     contactType: "customer service",
-    email: "info@inventerdesignstudio.com",
+    email: "info@inventordesignstudio.io",
     availableLanguage: ["English", "Urdu"],
   },
+  hasMap: "https://maps.app.goo.gl/vYfa48yTxy26Z9ucA",
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      opens: "19:00",
+      closes: "04:30"
+    }
+  ],
   sameAs: [
     "https://github.com",
     "https://linkedin.com",
@@ -71,31 +81,55 @@ export const getServiceSchema = () => ({
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Software & Web Development",
-          description: "Full-stack web applications, SaaS platforms, high-performance APIs, and cloud infrastructure.",
+          name: "Agentic AI & Custom LLMs",
+          description: "Autonomous AI agents, LangChain/LlamaIndex multi-agent orchestration, RAG retrieval engines, and bespoke LLM fine-tuning.",
         },
       },
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "UI/UX & Product Design",
-          description: "User research, wireframing, interactive prototyping, and accessible digital design systems.",
+          name: "Networking & Cyber Security",
+          description: "Zero-Trust network architecture, firewall hardening, encrypted microservices, continuous threat monitoring, and vulnerability defense.",
         },
       },
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Cinematic Video Production",
-          description: "Commercial films, brand documentaries, drone videography, VFX, and social media reels.",
+          name: "Advanced SEO & Generative Engine Optimization (GEO)",
+          description: "Programmatic SEO architectures, Schema.org graph markup, Core Web Vitals optimization, and generative AI search indexing.",
         },
       },
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Branding & Visual Identity",
+          name: "Cloud Infrastructure & DevOps",
+          description: "High-availability Kubernetes clusters, Docker containerization, automated CI/CD pipelines, multi-cloud AWS/GCP, and 99.99% uptime architectures.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Full-Stack Web & SaaS Engineering",
+          description: "Modern high-performance React/Next.js architectures, TypeScript microservices, real-time WebSocket systems, and scalable distributed databases.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Cinematic Video Production & CG VFX",
+          description: "4K commercial films, DaVinci Resolve color grading, 2D/3D VFX, viral social reels, and auditory sound design.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Branding & Visual Identity Systems",
           description: "Logo systems, typography, brand guidelines, and multi-channel creative direction.",
         },
       },

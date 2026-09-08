@@ -24,6 +24,7 @@ const Footer = () => {
   const { toast } = useToast();
   const [newsletterEmail, setNewsletterEmail] = useState("");
   const [isSubscribing, setIsSubscribing] = useState(false);
+  const [isSubscribed, setIsSubscribed] = useState(false);
 
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,23 +35,32 @@ const Footer = () => {
       const response = await fetch("/api/newsletter", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: newsletterEmail }),
+        body: JSON.stringify({ email: newsletterEmail, _hp_company: "" }),
       });
-      const data = await response.json();
 
-      if (response.ok && data.success) {
+      let data: any = null;
+      try {
+        const text = await response.text();
+        data = text ? JSON.parse(text) : null;
+      } catch {
+        data = null;
+      }
+
+      if (response.ok || data?.success) {
         trackEvent("newsletter_subscribed", { email: newsletterEmail });
+        setIsSubscribed(true);
         toast({
-          title: "Subscribed!",
-          description: "Thank you for subscribing to our newsletter updates.",
+          title: "Subscribed Successfully!",
+          description: "Thank you for subscribing! You will receive our latest updates and insights.",
         });
         setNewsletterEmail("");
+        setTimeout(() => setIsSubscribed(false), 8000);
       } else {
-        throw new Error(data.error || "Failed to subscribe.");
+        throw new Error(data?.error || "Failed to subscribe. Please try again.");
       }
     } catch (err: any) {
       toast({
-        title: "Subscription error",
+        title: "Subscription Notice",
         description: err.message || "Failed to subscribe. Please try again.",
         variant: "destructive",
       });
@@ -172,9 +182,9 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/portfolio" className="hover:text-primary transition-colors flex items-center gap-2 group">
+                <Link to="/projects" className="hover:text-primary transition-colors flex items-center gap-2 group">
                   <span className="w-0 group-hover:w-2 h-0.5 bg-primary transition-all duration-300"></span>
-                  Portfolio
+                  Projects
                 </Link>
               </li>
               <li>
@@ -249,14 +259,14 @@ const Footer = () => {
               <span className="absolute -bottom-1 left-0 w-1/2 h-0.5 bg-gradient-to-r from-primary/80 to-transparent"></span>
             </h4>
             <a 
-              href="mailto:info@inventerdesignstudio.com"
+              href="mailto:info@inventordesignstudio.io"
               onClick={() => trackEvent("email_clicked", { location: "footer" })}
               className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors flex items-center mb-3 sm:mb-4 group"
             >
               <div className="w-6 flex justify-center mr-2">
                 <Mail size={14} className="sm:size-16 group-hover:text-primary transition-colors" />
               </div>
-              <span>info@inventerdesignstudio.com</span>
+              <span>info@inventordesignstudio.io</span>
               <ExternalLink size={12} className="opacity-0 group-hover:opacity-100 transition-opacity ml-1" />
             </a>
             <a 
@@ -271,7 +281,7 @@ const Footer = () => {
               <ExternalLink size={12} className="opacity-0 group-hover:opacity-100 transition-opacity ml-1" />
             </a>
             <a 
-              href="https://share.google/22EChxAzOwTvM5Z1I"
+              href="https://maps.app.goo.gl/vYfa48yTxy26Z9ucA"
               target="_blank" 
               rel="noopener noreferrer"
               className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors flex items-center group"
@@ -303,16 +313,24 @@ const Footer = () => {
                 value={newsletterEmail}
                 onChange={(e) => setNewsletterEmail(e.target.value)}
                 placeholder="Enter your email address" 
-                className="flex-1 h-10 px-3 py-2 text-sm rounded-lg bg-background border border-border focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary placeholder:text-muted-foreground/60"
+                className="flex-1 h-10 px-3.5 py-2 text-sm rounded-lg bg-background border border-border focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary placeholder:text-muted-foreground/60 transition-all"
               />
               <button 
                 type="submit"
-                disabled={isSubscribing}
-                className="h-10 px-5 py-2 text-sm font-medium rounded-lg bg-primary hover:bg-primary/90 text-white transition-all flex items-center justify-center gap-2 whitespace-nowrap disabled:opacity-70 shadow-md shadow-primary/20"
+                disabled={isSubscribing || isSubscribed}
+                className={`h-10 px-5 py-2 text-sm font-medium rounded-lg transition-all flex items-center justify-center gap-2 whitespace-nowrap disabled:opacity-90 shadow-md ${
+                  isSubscribed 
+                    ? "bg-lime-400 text-black shadow-lime-400/30 font-semibold" 
+                    : "bg-primary hover:bg-primary/90 text-white shadow-primary/20 cursor-pointer"
+                }`}
               >
                 {isSubscribing ? (
                   <>
-                    <Loader2 size={15} className="animate-spin" /> Subscribing...
+                    <Loader2 size={15} className="animate-spin" /> Sending via SMTP...
+                  </>
+                ) : isSubscribed ? (
+                  <>
+                    <CheckCircle2 size={15} className="text-black" /> Subscribed!
                   </>
                 ) : (
                   "Subscribe"

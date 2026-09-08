@@ -159,7 +159,7 @@ export const getClientConfirmationHtml = (name: string, subject?: string) => {
         </div>
         <div class="footer">
           &copy; ${new Date().getFullYear()} Inventor Design Studio. All rights reserved.<br>
-          <a href="https://inventordesignstudio.io">https://inventordesignstudio.io</a> &bull; <a href="mailto:info@inventerdesignstudio.com">info@inventerdesignstudio.com</a>
+          <a href="https://inventordesignstudio.io">https://inventordesignstudio.io</a> &bull; <a href="mailto:info@inventordesignstudio.io">info@inventordesignstudio.io</a>
         </div>
       </div>
     </body>

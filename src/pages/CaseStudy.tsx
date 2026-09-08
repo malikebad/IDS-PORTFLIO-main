@@ -4,12 +4,10 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import SEO from '../components/SEO';
 import { getBreadcrumbSchema, getImageObjectSchema } from '../lib/structuredData';
-// ✅ CORRECTED IMPORTS
-import ArchitectureInteriorDesign from '../assets/ArchitectureInteriorDesign.png';
+// ✅ IMPORTS
 import BrandingIdentity from '../assets/BrandingIdentity.png';
 import SocialMediaContent from '../assets/SocialMediaContent.png';
 import UIUXProductDesign from '../assets/UIUXProductDesign.png';
-import Visualization3DRendering from '../assets/Visualization3DRendering.png';
 import webdevelopment from '../assets/webdevelopment.png';
 
 // ✅ IMPORT REAL PROJECT IMAGES
@@ -568,42 +566,42 @@ const caseStudies = {
     image: BrandingIdentity,
   },
 
-  // 3. Architecture & Interior
+  // 3. Cinematic Video Production
   '3': {
     id: 3,
-    title: "Luxury Villa Design",
-    category: "Architecture & Interior",
-    client: "Private Client",
+    title: "Cinematic Brand Commercial & Storytelling Film",
+    category: "Video Production",
+    client: "Global Brand Studios",
     year: "2024",
-    duration: "4 Months",
-    role: "Lead Architect & Interior Designer",
-    overview: "A contemporary luxury villa design that seamlessly blends modern architecture with interior elegance, creating a harmonious living space.",
-    challenge: "The client wanted a modern villa that maximized natural light, offered panoramic views, and incorporated sustainable design principles while maintaining luxury aesthetics.",
-    solution: "Designed an open-concept villa with floor-to-ceiling windows, natural materials, and sustainable features. The interior design focuses on minimalism with warm, organic elements.",
-    technologies: ["AutoCAD", "Revit", "3ds Max", "V-Ray", "Sustainable Design"],
+    duration: "2 Months",
+    role: "Lead Cinematographer & Colorist",
+    overview: "A cinematic commercial production blending high-framerate 4K filming, narrative pacing, atmospheric lighting, and precision DaVinci Resolve color grading.",
+    challenge: "The client needed an emotionally captivating commercial film to launch their flagship global campaign across broadcast, web, and social platforms.",
+    solution: "We produced a multi-scene commercial film with cinematic lighting, dynamic speed ramping, bespoke acoustic sound design, and custom color science.",
+    technologies: ["DaVinci Resolve", "After Effects", "4K Cinematography", "Sound Design", "Color Grading"],
     process: [
       {
-        phase: "Site Analysis",
-        description: "Conducted thorough site analysis considering topography, climate, and views."
+        phase: "Creative Scripting & Storyboarding",
+        description: "Developed scene-by-scene storyboards, shot lists, and mood boards."
       },
       {
-        phase: "Concept Design",
-        description: "Developed multiple design concepts exploring different architectural styles and spatial arrangements."
+        phase: "Cinematic Production & Filming",
+        description: "Executed high-framerate 4K filming with multi-cam setups and studio lighting."
       },
       {
-        phase: "Detailed Design",
-        description: "Created detailed architectural drawings, interior design plans, and material selections."
+        phase: "Editorial & Rhythm Editing",
+        description: "Crafted high-retention pacing with seamless match cuts and sound sync."
       },
       {
-        phase: "Construction Documentation",
-        description: "Prepared comprehensive construction documents and coordinated with engineering consultants."
+        phase: "DaVinci Color Grading & VFX",
+        description: "Applied filmic tone curves, color balance, and subtle atmospheric VFX."
       },
       {
-        phase: "Construction & Handover",
-        description: "Oversaw construction, ensuring quality and design integrity, and delivered the completed villa."
+        phase: "Sound Design & Master Delivery",
+        description: "Layered Foley sound effects, orchestral scoring, and delivered multi-format masters."
       }
     ],
-    image: ArchitectureInteriorDesign,
+    image: SocialMediaContent,
   },
 
   // 4. UI/UX Design
@@ -644,42 +642,42 @@ const caseStudies = {
     image: UIUXProductDesign,
   },
 
-  // 5. Visualization & 3D
+  // 5. Video Motion Graphics & VFX
   '5': {
     id: 5,
-    title: "Product Visualization",
-    category: "Visualization & 3D",
-    client: "Luxury Brands International",
+    title: "Documentary Motion Graphics & 3D VFX",
+    category: "Video Production & VFX",
+    client: "Media Creators Group",
     year: "2024",
     duration: "1.5 Months",
-    role: "Lead 3D Artist",
-    overview: "Photorealistic 3D product renderings and animations for marketing and product presentations.",
-    challenge: "The client needed high-quality visual content for their luxury product line but couldn't afford costly photoshoots for every product variant.",
-    solution: "We created a library of photorealistic 3D product models and renderings that could be used across marketing materials, websites, and presentations.",
-    technologies: ["Blender", "Maya", "V-Ray", "Substance Painter", "Adobe Photoshop"],
+    role: "Lead Motion Designer & VFX Artist",
+    overview: "Documentary-level motion design, 3D camera maps, archival newspaper visualizers, and glassmorphism interface overlays for high-retention video essays.",
+    challenge: "The creator needed high-end agency-grade motion graphics and 3D visual storytelling to maintain audience retention throughout long-form educational documentaries.",
+    solution: "We engineered a modular motion design framework with 3D camera projections, animated charts, kinetic typography, and custom Foley sound effects.",
+    technologies: ["After Effects", "Blender", "Premiere Pro", "Photoshop", "Sound Design"],
     process: [
       {
-        phase: "Product Analysis",
-        description: "Studied product specifications, materials, and desired visual outcomes."
+        phase: "Script & Visual Pacing Analysis",
+        description: "Mapped auditory retention cues and designed storyboard concept frames."
       },
       {
-        phase: "3D Modeling",
-        description: "Created detailed 3D models with precise geometry and material properties."
+        phase: "3D Asset & Scene Modeling",
+        description: "Built photorealistic 3D camera spaces, newspaper archives, and UI elements."
       },
       {
-        phase: "Texturing & Lighting",
-        description: "Applied realistic textures and lighting to achieve photorealistic quality."
+        phase: "Motion Dynamics & Keyframing",
+        description: "Keyframed smooth bezier velocity curves and kinetic text transitions."
       },
       {
-        phase: "Rendering & Animation",
-        description: "Produced high-resolution renders and animations for various use cases."
+        phase: "Compositing & Lighting",
+        description: "Integrated ambient lighting, film grain, chromatic aberration, and textures."
       },
       {
-        phase: "Post-Production",
-        description: "Enhanced final renders with color correction and compositing."
+        phase: "Sound FX Synchronization",
+        description: "Layered mechanical clicks, deep impacts, and swooshes for every visual beat."
       }
     ],
-    image: Visualization3DRendering,
+    image: webdevelopment,
   },
 
   // 6. Social Media Handling
@@ -724,7 +722,7 @@ const caseStudies = {
   '7': {
     id: 7,
     title: "Corporate Website Design",
-    category: "Web Designing",
+    category: "Web Development",
     client: "Global Enterprise Solutions",
     year: "2024",
     duration: "2 Months",
@@ -758,42 +756,42 @@ const caseStudies = {
     image: webdevelopment,
   },
 
-  // 8. Architecture & Interior (Office Design)
+  // 8. Cloud & DevOps Infrastructure
   '8': {
     id: 8,
-    title: "Interior Office Design",
-    category: "Architecture & Interior",
-    client: "TechHub Co-working",
+    title: "Enterprise Cloud & DevOps Platform",
+    category: "Cloud & DevOps",
+    client: "TechHub Cloud Solutions",
     year: "2024",
     duration: "3 Months",
-    role: "Lead Interior Designer",
-    overview: "A modern office interior design focused on creating a productive and inspiring workspace that fosters collaboration and creativity.",
-    challenge: "The client needed to transform a traditional office space into a modern, collaborative environment that would attract and retain top talent.",
-    solution: "We designed an open-plan office with collaborative zones, quiet areas, and biophilic design elements. The space incorporates natural light, sustainable materials, and flexible workstations.",
-    technologies: ["AutoCAD", "SketchUp", "Enscape", "Biophilic Design", "Sustainable Materials"],
+    role: "Lead DevOps Architect",
+    overview: "A resilient cloud infrastructure setup with automated continuous deployment pipelines, container orchestration, and real-time monitoring.",
+    challenge: "The client experienced scaling bottlenecks and slow deployment cycles that delayed feature rollouts to enterprise customers.",
+    solution: "We architected an automated CI/CD pipeline using Docker, Kubernetes, and AWS with automated staging environments and zero-downtime rolling deployments.",
+    technologies: ["Docker", "Kubernetes", "AWS", "GitHub Actions", "Terraform", "Grafana"],
     process: [
       {
-        phase: "Space Analysis",
-        description: "Analyzed the existing space and conducted employee surveys to understand needs."
+        phase: "Infrastructure Audit",
+        description: "Evaluated existing server architecture and identified latency and scalability bottlenecks."
       },
       {
-        phase: "Concept Design",
-        description: "Developed design concepts focusing on collaboration and well-being."
+        phase: "Containerization",
+        description: "Dockerized application microservices for deterministic local and production environments."
       },
       {
-        phase: "Detailed Design",
-        description: "Created detailed plans, 3D visualizations, and material selections."
+        phase: "CI/CD Pipeline Setup",
+        description: "Automated test suites, artifact builds, and rolling deployments via GitHub Actions."
       },
       {
-        phase: "Construction",
-        description: "Oversaw construction, ensuring design integrity and quality."
+        phase: "Security Hardening",
+        description: "Implemented SSL certificates, firewall rules, secret encryption, and role-based access."
       },
       {
-        phase: "Furnishing & Handover",
-        description: "Selected and installed furniture, completed the fit-out, and delivered the space."
+        phase: "Observability & Monitoring",
+        description: "Configured real-time error tracking and performance metrics dashboards."
       }
     ],
-    image: ArchitectureInteriorDesign,
+    image: UIUXProductDesign,
   }
 };
 

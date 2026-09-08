@@ -20,7 +20,7 @@ const FAQ = () => {
         category: "Services",
         question: "What core services does Inventor Design Studio provide?",
         answer:
-          "We are a multidisciplinary creative technology studio providing end-to-end digital services: full-stack web and SaaS application development, UI/UX and product design, cinematic video production, 3D visualization, brand identity systems, and cloud infrastructure/DevOps.",
+          "We are a multidisciplinary creative technology studio providing end-to-end digital services: full-stack web and SaaS application development, UI/UX and product design, cinematic video production & social reels, motion graphics & VFX, brand identity systems, and cloud infrastructure/DevOps.",
         topics: ["services", "capabilities"],
       },
       {
